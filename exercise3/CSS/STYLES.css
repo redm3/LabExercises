@@ -7,10 +7,22 @@ h2 { color: darkblue }
 .red {color: crimson;}
 
 header { background-color: blue; color: white; text-align: center; padding:20px; }
-nav { float: left; background-color: gold; width: 30%; height: 300px; padding: 20px; }
+nav { float: left; background-color: gold; width: 30%; height: 200px; padding: 20px; }
 
 article { background-color: whitesmoke; float: left; width: 70%; padding: 20px; }
 fieldset { border: 0 none; padding: 0; margin: 5px ; }
 
 aside { clear: both; }
 footer { background: #222; color: #eee; text-align: center; padding: 0.5em; font-size: 0.9em; }
+
+table { background-color: white;margin-left:350px }
+
+.tool{background-color: red;}
+
+th{background-color: green;}
+
+tr{background-color: aqua;}
+
+.centeredsection { text-align: center; margin-top:10px; margin-left:10px}
+
+.tablemove{ text-align: center; margin-top:10px; margin-left:400px}
