@@ -7,7 +7,7 @@ function helloWorld(){
 }
 
 function prize(){
-    alert('YOU HAVE WON!!!!!!!!!!!!');
+    alert('CONGRATZ ON THE LAMBO JOKES!!!!!!!!!!!!');
     document.getElementById('prize').style.backgroundColor = 'black';
     document.getElementById('prize').style.color = 'white';
 }
