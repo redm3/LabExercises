@@ -29,27 +29,4 @@ function rollDice() {
   function rolledAsix() {
   }
 
-  const circle = document.querySelector('.circle');
-  const screen = {
-      width: window.innerWidth,
-      height: window.innerHeight
-  };
   
-  function update() {
-
-    const speed = 10;
-    let x = 0;
-    let y = 0;
-    let dx = speed;
-    let dy = speed;
-    x += dx;
-    y += dy;
-    if (x < 0 || x > screen.width - circle.clientWidth) {
-        dx = -dx;
-    }
-    if (y < 0 || y > screen.height - circle.clientHeight) {
-        dy = -dy;
-    }
-    circle.style.transform = `translate(${x}px, ${y}px)`;
-    requestAnimationFrame(update);
-}
