@@ -4,6 +4,8 @@
 <head>
     <title>MARCO NEWS hub</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css"/>
+
 </head>
 
 <body style="background:linear-gradient(red,orange,yellow,green,blue,indigo,violet); text-align:center">
@@ -44,6 +46,10 @@
         </aside>
     </section>
     <h2>SUBSCRIBE TO MARCO NEWS</h2>
+
+    <button onclick="helloWorld()" id="helloWorldButton">LOOSE PRIZE</button>
+    <button onclick="prize()" id="prize">WIN PRIZE</button>
+
     <!--
 
 If you click the "Submit" button, the form-
@@ -60,8 +66,40 @@ e". -->
         <input type="submit" value="Submit">
     </form>
     <footer>
-        <p>@copyright 2050 by MARCO NEWS. all rights reversed</p>
+        <p id="demo">@copyright 2050 by MARCO NEWS. all rights reversed</p>
     </footer>
+    <script src="js/script.js"></script>
+<!--
+    <script>
+        document.getElementById("demo").style.colour = "red";
+
+        function helloWorld(){
+            alert('OH NO YOU HAVE LOST');
+            document.getElementById('helloWorldButton').style.backgroundColor = 'black';
+            document.getElementById('helloWorldButton').style.color = 'white';
+        }
+
+        function prize(){
+            alert('YOU HAVE WON!!!!!!!!!!!!');
+            document.getElementById('prize').style.backgroundColor = 'black';
+            document.getElementById('prize').style.color = 'white';
+        }
+
+        function changeParagraph(){
+            document.getElementById('demo').innerHTML = 'New <strong>paragraph</strong> text';
+        }
+    </script>
+-->
+   <!--
+    <script>
+        alert('Hello from JavaScript!')
+    </script>
+   -->
+   <!--
+    <script>
+        document.getElementById("demo").style.colour = "red";
+    </script>
+    -->
 </body>
 
 </html>
