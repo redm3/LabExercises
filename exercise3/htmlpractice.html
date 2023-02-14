@@ -21,8 +21,41 @@
               
                 <p><a href="https://www.nzherald.co.nz/business/established-house-builder-anthem-homes-laying-staff-off-after-tough-market-conditions/HYWOGHNMANDBJGVBTQAX65YDZU/">Article 1</a></p><br>
                 <p><a href="https://www.nzherald.co.nz/nz/cyclone-gabrielle-live-updates-on-emergency-situation-30-weather-warnings-in-northland-auckland-coromandel-bay-of-plenty-gisborne-hawkes-bay-taranaki-and-other-centres/42JICJ5NIJGFZNUI3SOJYPYG5M/">Article 2</a></p><br>
+                <!--
                 <img src="https://cdn.theatlantic.com/thumbor/vfx2t6dCTfW4-v5drbdAc2pDG0o=/1x0:999x561/976x549/media/img/mt/2018/09/Florence/original.gif"
                             width="250" alt="NEWS"> 
+                -->
+                <div class="circle"></div>
+                <script>
+                const circle = document.querySelector('.circle');
+                const screen = {
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                };
+                const speed = 10;
+                let x = 0;
+                let y = 0;
+                let dx = speed;
+                let dy = speed;
+
+                function update() {
+                    x += dx;
+                    y += dy;
+                    if (x < 0 || x > screen.width - circle.clientWidth) {
+                        dx = -dx;
+                    }
+                    if (y < 0 || y > screen.height - circle.clientHeight) {
+                        dy = -dy;
+                    }
+                    circle.style.transform = `translate(${x}px, ${y}px)`;
+                    requestAnimationFrame(update);
+                }
+
+                requestAnimationFrame(update);
+                </script>
+                
+                
+                
         </nav>
         <article>
             <h2>STORM EVENT OVER AUCKLAND</h2>
@@ -46,7 +79,7 @@
     <h2>SUBSCRIBE TO MARCO NEWS TO WIN A PRIZE</h2>
     <h2>CLICK HERE TO SEE PRIZES</h2>
     <button class="tablemove" onclick="helloWorld()" id="helloWorldButton">WIN PRIZE 1</button>
-    <button onclick="prize()" id="prize">WIN PRIZE 2 </button>
+    <button onclick="prize()" id="prize">WIN PRIZE 2 </button><br>
     <h2>ROLL A 6 WITH A SIX OR 10 SIDED DICE TO WIN</h2>
     <p>SELECT THE TYPE OF DICE</p>
     <select id="dice-type">

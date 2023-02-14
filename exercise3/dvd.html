@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.circle {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			border-radius: 50%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			animation: bounce 2s infinite;
+			transform-origin: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="circle"></div>
+
+	<script>
+		const circle = document.querySelector('.circle');
+		const screen = {
+			width: window.innerWidth,
+			height: window.innerHeight
+		};
+		const speed = 10;
+		let x = 0;
+		let y = 0;
+		let dx = speed;
+		let dy = speed;
+
+		function update() {
+			x += dx;
+			y += dy;
+			if (x < 0 || x > screen.width - circle.clientWidth) {
+				dx = -dx;
+			}
+			if (y < 0 || y > screen.height - circle.clientHeight) {
+				dy = -dy;
+			}
+			circle.style.transform = `translate(${x}px, ${y}px)`;
+			requestAnimationFrame(update);
+		}
+
+		requestAnimationFrame(update);
+	</script>
+</body>
+</html>
