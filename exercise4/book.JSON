@@ -1,0 +1,6 @@
+const book = {
+    "title" : "BOOK",
+    "author" : "Marco Wells"
+};
+
+console.log(book.title);
