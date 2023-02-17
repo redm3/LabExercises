@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+      table, th, td {
+          border: 1px solid black;
+      }
+    </style>
+    <nav>
+      <a href="./">Home</a>
+      <a href="./form.html">Form</a>
+    </nav>
+  
     <title>Title</title>
     <h1>My HTML learning journey</h1>
-    <h1>Baby Butter Fly Cartel/h1>
 
     <article>
       <h2>Learning elements - div, span, p, pre, ul, li, ol, article</h2>
@@ -21,6 +30,44 @@
         <li>article</li>
       </ul>
     </article>
+
+    <table>
+      <thead>
+      <tr>
+          <th>First header</th>
+          <th>Second header</th>
+          <th colspan="2">Third header spanning two columns</th>
+      </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>First cell - first row</td>
+              <td>Second cell - first row</td>
+              <td rowspan="2">Cell spanning two rows</td>
+              <td >Third cell - first row</td>
+          </tr>
+      </tbody>
+  </table>
+  <img src="https://picsum.photos/200/300" alt="" />
+  
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/52Z4SbCKbqs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <video controls width="250" autoplay>
+    <source src="/media/cc0-videos/flower.webm"
+            type="video/webm">
+    <source src="/media/cc0-videos/flower.mp4"
+            type="video/mp4">
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+<audio controls autoplay
+
+    src="/media/cc0-audio/t-rex-roar.mp3">
+        Your browser does not support the
+        <code>audio</code> element.
+</audio>
+
+
+  
     
     <meta charset="UTF-8">
     <meta name="description" content="A brief description of my webpage">

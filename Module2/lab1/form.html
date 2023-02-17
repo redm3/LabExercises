@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <!-- works like <a href="/index.html">Home</a> -->
+        <a href="/">Home</a>
+      </nav>
+    </header>
+    <form method="POST" action="http://localhost:3000/profile">
+      <div>
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name" required>
+      </div>
+    
+      <div>
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name" required>
+      </div>
+    
+      <div>
+        <label>Gender:</label>
+        <div>
+          <label for="male">Male</label>
+          <input type="radio" id="male" name="gender" value="male">
+        </div>
+    
+        <div>
+          <label for="female">Female</label>
+          <input type="radio" id="female" name="gender" value="female">
+        </div>
+    
+        <div>
+          <label for="other">Other</label>
+          <input type="radio" id="other" name="gender" value="other">
+        </div>
+      </div>
+    
+      <div>
+        <label>Interests:</label>
+        <div>
+          <label for="interests-music">Music</label>
+          <input type="checkbox" id="interests-music" name="interests" value="music">
+        </div>
+    
+        <div>
+          <label for="interests-sports">Sports</label>
+          <input type="checkbox" id="interests-sports" name="interests" value="sports">
+        </div>
+    
+        <div>
+          <label for="interests-travel">Travel</label>
+          <input type="checkbox" id="interests-travel" name="interests" value="travel">
+        </div>
+      </div>
+    
+      <div>
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+          <option value="usa">USA</option>
+          <option value="canada">Canada</option>
+          <option value="mexico">Mexico</option>
+        </select>
+      </div>
+    
+      <button type="submit">Submit form</button>
+    </form>
+    
+    </form>
+
+    <main>
+      
+    </main>
+    <footer>Copyright 2021 &copy;</footer>
+  </body>
+</html>
