@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --prussian-blue: #12263aff;
+            --robin-egg-blue: #06bcc1ff;
+            --ash-gray: #c5d8d1ff;
+            --isabelline: #f4edeaff;
+            --light-orange: #f4d1aeff;   
+        }    
+        
+        * { margin: 0; }
+        body { font-size: 16px; font-family: sans-serif; text-align: center; }
+        header { background: var(--prussian-blue); padding: 1em; }
+        main { background: var(--isabelline); }
+        section { padding: 2em; }
+        footer { padding: 1em; background: var(--robin-egg-blue)}
+
+        header h1 { color: var(--isabelline); }
+
+        #section1 { background: var(--ash-gray); }
+        #section2 { background: var(--light-orange); }
+
+        a.button { background: var(--robin-egg-blue); color: var(--prussian-blue); text-transform: uppercase; padding: 0.5em 2em; display: inline-block; text-decoration: none; font-weight: bold; }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Main Heading</h1>
+    </header>
+
+    <main>
+
+        <section id="section1">
+            <h2>Heading #2</h2>
+            <p>this section uses an ash gray background colour taken from a variable</p>
+            <div><a class="button" href="#">Example Button</a></div>
+        </section>
+
+        <section id="section2">
+            <h2>Heading #3</h2>
+            <p>this section uses a light orange background colour taken from a variable</p>
+        </section>
+
+        <section id="section3">
+            <h2>Heading #4</h2>
+            <p>this section has no background colour of its own</p>
+        </section>        
+    </main>
+
+    <footer>
+        <h5>Footer</h5>
+    </footer>
+</body>
+</html>
