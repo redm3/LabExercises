@@ -4,34 +4,8 @@
     margin: 30px;
 }
 
-.box {
-    box-sizing: content-box;
-    margin: 10px 20px 30px 40px;
-    width: 200px; /* px */
-    height: 10rem;
-    border: 2px solid red;
-    text-overflow: ellipsis;
-    overflow: auto;
-    outline: 10px solid red;
-    border-radius: 20px;
-}
-
-.position-absolute {
-    position: absolute;
-    position: relative;
-    top: 50%;
-    right: 50%;
-
-    z-index: absolute;
-}
-
-.positon-sticky{
-    
-}
-
-.absolute-child {
-    position: absolute;
-    top: 50%;
-    right: 50%;
-
+.background-image {
+    background: url(../assets/images/12.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
