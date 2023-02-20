@@ -6,52 +6,62 @@
     'Lucida Sans', Arial, sans-serif;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
 nav {
+    display: flex;
     height: 80px;
-    /* background: #fdcc04; */
+    background: #000000; 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0rem calc((100vw - 1300px) / 2);
+/*     box-shadow: 0px 10px 10px gray;
+    z-index: 2; */
     /* padding: 0rem calc((10vw - 1300px) / 2); */
     /* overflow: hidden; */
     /* background:yellow; */
   }
 
-  nav a {
-    text-decoration: none;
-    color: #114B5F;
-    padding: 0 1.5rem;
-  }
-  
-  nav a:hover {
-    color: #fff;
-  }
-
 .logo {
-    color: #114B5F;;
+    color: #ffffff;;
     font-size: 1.5rem;
     font-weight: bold;
     font-style: italic;
     padding: 0 2rem;
 }
 
+  nav a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 0 1.5rem;
+  }
+  
+  nav a:hover {
+    color: #BDEDE0;
+  }
+
+
 body {
-    display: flex;
+ /*    display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-start; */
+    /* display: flex; */
     height: 100vh;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Work Sans', sans-serif;
+    /* font-family: Arial, sans-serif; */
     font-size: 16px;
     line-height: 1.5;
     background: #BDEDE0
 }
 
 .container {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
+    /* height: max-content; */
     width: 75%;
     margin: 0 auto;
     padding: 20px;
@@ -59,7 +69,36 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.sidebar {
+.box {
+    /* background: url(./Module2/lab2/assets/images/12.PNG); */
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: content-box;
+    margin: 10px 20px 30px 40px;
+    width: 630px;
+    /* px */
+    height: 620px;
+    /* border: 2px solid red; */
+    text-overflow: ellipsis;
+    overflow: auto;
+ /*    outline: 5px solid red;
+    border-radius: 20px; */
+}
+
+.background-image {
+    background: url(../assets/images/12.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    outline: 5px solid red;
+    border-radius: 20px;
+}
+
+.background-image1 {
+    background: url(../assets/images/sparks.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* .sidebar {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,7 +106,70 @@ body {
     width: 25%;
     height: 100%;
     background-color: #f2f2f2;
-}
+} */
+
+.hero {
+    background: #f2f2f2;
+  }
+  
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    display: flex;
+    height: 100vh;
+    /* padding: 3rem calc((0vw - 900px) / 2); */
+  }
+  
+
+.column-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    padding: 0rem 2rem;
+    background-color: #222222;
+    width: 55%;
+    float: left;
+  }
+  
+  .column-left h1 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+  }
+  
+  .column-left p {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+
+.column-right {
+/*     display: flex;
+    justify-content: center;
+    align-items: top; */
+    /* padding: 0rem 2rem; */
+    color: #ffffff;
+    float: center;
+    background: url(../assets/images/sparks.gif);
+    background-size:cover;
+    background-repeat: no-repeat;
+    padding-right: 20px;
+    padding-left: 20px;
+    
+    
+  }
+
+  .column-right h1 {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+  }
+  
+  .column-right p {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
 
 h1 {
     font-size: 32px;
@@ -90,3 +192,16 @@ h2 {
 p {
     margin: 0 0 10px;
 }
+
+.pixelart-to-css {
+    box-shadow: 10px 60px 0 0 #000000, 20px 60px 0 0 #000000, 30px 60px 0 0 #000000, 50px 60px 0 0 #000000, 60px 60px 0 0 #000000, 70px 60px 0 0 #000000, 90px 60px 0 0 #000000, 120px 60px 0 0 #000000, 130px 60px 0 0 #000000, 160px 60px 0 0 #000000, 200px 60px 0 0 #000000, 10px 70px 0 0 #000000, 60px 70px 0 0 #000000, 90px 70px 0 0 #000000, 120px 70px 0 0 #000000, 150px 70px 0 0 #000000, 160px 70px 0 0 #000000, 190px 70px 0 0 #000000, 200px 70px 0 0 #000000, 10px 80px 0 0 #000000, 60px 80px 0 0 #000000, 90px 80px 0 0 #000000, 120px 80px 0 0 #000000, 160px 80px 0 0 #000000, 180px 80px 0 0 #000000, 200px 80px 0 0 #000000, 10px 90px 0 0 #000000, 20px 90px 0 0 #000000, 60px 90px 0 0 #000000, 90px 90px 0 0 #000000, 120px 90px 0 0 #000000, 130px 90px 0 0 #000000, 160px 90px 0 0 #000000, 180px 90px 0 0 #000000, 200px 90px 0 0 #000000, 10px 100px 0 0 #000000, 60px 100px 0 0 #000000, 90px 100px 0 0 #000000, 120px 100px 0 0 #000000, 160px 100px 0 0 #000000, 180px 100px 0 0 #000000, 190px 100px 0 0 #000000, 200px 100px 0 0 #000000, 210px 100px 0 0 #000000, 10px 110px 0 0 #000000, 60px 110px 0 0 #000000, 90px 110px 0 0 #000000, 120px 110px 0 0 #000000, 160px 110px 0 0 #000000, 200px 110px 0 0 #000000, 10px 120px 0 0 #000000, 50px 120px 0 0 #000000, 60px 120px 0 0 #000000, 70px 120px 0 0 #000000, 90px 120px 0 0 #000000, 100px 120px 0 0 #000000, 120px 120px 0 0 #000000, 130px 120px 0 0 #000000, 150px 120px 0 0 #000000, 160px 120px 0 0 #000000, 170px 120px 0 0 #000000, 200px 120px 0 0 #000000;
+    height: 10px;
+    width: 10px;
+
+  }
+
+@media screen and (max-width: 768px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+    }
+  }
