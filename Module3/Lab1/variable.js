@@ -115,9 +115,7 @@ console.log("part 6")
 const inigo = {
     firsName: 'Marco',
     lastName: 'Wells',
-    getGreeting3: function() {
-        return 'Hello ' + this.firsName + ' ' + this.lastName + '.';
-    }  
+    getGreeting3: function() {return 'Hello ' + this.firsName + ' ' + this.lastName + '.';}  
 };
 console.log(inigo.getGreeting3())
 
