@@ -183,7 +183,6 @@ p {
     }
     .column-left{
         width: 100%;
-        
     }
     
     .column-right{
@@ -191,7 +190,6 @@ p {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
     }
 
   }
