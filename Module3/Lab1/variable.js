@@ -239,7 +239,8 @@ let teamSports = ['Hockey', 'Cricket', 'Volleyball'];
 let dog1 = 'Bingo';
 let cat1 = { name: 'Fluffy', breed: 'Siberian' };
 
-moreSports = teamSports;
+//moreSports = teamSports;
+let moreSports = [...teamSports];
 
 moreSports.push('Soccer');
 moreSports.unshift('Cricket')
@@ -253,7 +254,8 @@ dog2 = "Figo"
 console.log(dog1); 
 console.log(dog2);
 
-cat2 = cat1;
+//cat2 = cat1;
+cat2 = {...cat1};
 cat2.name = "Geffory"
 
 console.log(cat1);
@@ -276,4 +278,40 @@ console.log(cat1);
 //cat1 original let cat1 = { name: 'Fluffy', breed: 'Siberian' };
 //cat1 output { name: 'Geffory', breed: 'Siberian' }
 //changed
+
+console.log("part 10")
+
+/* function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.human = true;
+} */
+class PersonClass {
+  constructor(name, age) {
+      this.name = name;
+      this.age = age;
+      this.human = true;
+      this.canDrive = (age >=16);
+    }
+  }
+
+let Marco = new PersonClass("Marco",14);
+let Marco2 = new PersonClass("Marco2",26);
+console.log(Marco.canDrive);
+console.log(Marco2.canDrive);
+
+//Person(Marco);
+
+console.log("Person 1:");
+for (let prop in Marco) {
+  console.log(`${prop}: ${Marco[prop]}`);
+}
+
+console.log("\nPerson 2:");
+for (let prop in Marco2) {
+  console.log(`${prop}: ${Marco2[prop]}`);
+}
+
+
+
 
