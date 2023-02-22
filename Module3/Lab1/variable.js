@@ -8,7 +8,7 @@ console.log(true + false)
 //0
 console.log(!true)
 //false
-console.log(6/"3")
+console.log(6 / "3")
 //2
 console.log("2" * "3")
 //6
@@ -98,13 +98,13 @@ console.log("part 5")
 } */
 
 //function expression syntax,
-const getGreeting1 = function(name) {
-    return 'Hello ' + name + '!';
+const getGreeting1 = function (name) {
+  return 'Hello ' + name + '!';
 };
 
 //Using arrow function syntax:
 const getGreeting2 = (name) => {
-    return 'Hello ' + name + '!';
+  return 'Hello ' + name + '!';
 };
 
 console.log(getGreeting1('marco'))
@@ -113,56 +113,56 @@ console.log(getGreeting2('marco'))
 console.log("part 6")
 //a
 const inigo = {
-    firsName: 'Marco',
-    lastName: 'Wells',
-    getGreeting3: function() {return 'Hello ' + this.firsName + ' ' + this.lastName + '.';}  
+  firsName: 'Marco',
+  lastName: 'Wells',
+  getGreeting3: function () { return 'Hello ' + this.firsName + ' ' + this.lastName + '.'; }
 };
 console.log(inigo.getGreeting3())
 
 //b
 function getCatchPhrase(person) {
-    if (person.fingers === 6) {
-      console.log("My name is Inigo Montoya. You killed my father. Prepare to die.");
-    } else {
-      console.log("You seem a decent fellow. I hate to kill you.");
-    }
+  if (person.fingers === 6) {
+    console.log("My name is Inigo Montoya. You killed my father. Prepare to die.");
+  } else {
+    console.log("You seem a decent fellow. I hate to kill you.");
   }
-  
-  const sixFingeredMan = {
-    name: "Six Fingered Man",
-    fingers: 6
-  };
-  
-  const fiveFingeredMan = {
-    name: "Five Fingered Man",
-    fingers: 5
-  };
-  
-  getCatchPhrase(sixFingeredMan); // Output: My name is Inigo Montoya. You killed my father. Prepare to die.
-  getCatchPhrase(fiveFingeredMan); // Output: You seem a decent fellow. I hate to kill you.
+}
+
+const sixFingeredMan = {
+  name: "Six Fingered Man",
+  fingers: 6
+};
+
+const fiveFingeredMan = {
+  name: "Five Fingered Man",
+  fingers: 5
+};
+
+getCatchPhrase(sixFingeredMan); // Output: My name is Inigo Montoya. You killed my father. Prepare to die.
+getCatchPhrase(fiveFingeredMan); // Output: You seem a decent fellow. I hate to kill you.
 //used chatgbt for b because i didnt the movie
 //c
 
 const westley = {
-    name: 'Westley',
-    numFingers: 5
+  name: 'Westley',
+  numFingers: 5
 }
 
-    const rugen = {
-    name: 'Count Rugen',
-    numFingers: 6
+const rugen = {
+  name: 'Count Rugen',
+  numFingers: 6
 }
 
 const inigo1 = {
-    firstName: 'Inigo',
+  firstName: 'Inigo',
 
 
-    greeting(person) {
-        let greeting = `Hello ${person.name}, my name is ${this.firstName}. `;
-        console.log(greeting + this.getCatchPhrase(person));
-    },
+  greeting(person) {
+    let greeting = `Hello ${person.name}, my name is ${this.firstName}. `;
+    console.log(greeting + this.getCatchPhrase(person));
+  },
 
-    getCatchPhrase: (person) => person.numFingers === 6 ? "My name is Inigo Montoya. You killed my father. Prepare to die." : "Nice to meet you."
+  getCatchPhrase: (person) => person.numFingers === 6 ? "My name is Inigo Montoya. You killed my father. Prepare to die." : "Nice to meet you."
 };
 
 
@@ -170,3 +170,110 @@ inigo1.greeting(westley)
 inigo1.greeting(rugen)
 
 console.log("part 7")
+
+const basketballGame = {
+  score: 0,
+  foulcount: 0,
+  foul() {
+    this.foulcount++;
+    return this;
+
+  },
+  freeThrow() {
+    this.score++;
+    return this;
+  },
+  basket() {
+    this.score += 2;
+    return this;
+  },
+  threePointer() {
+    this.score += 3;
+    return this;
+  },
+  halfTime() {
+    console.log('Halftime score is ' + this.score + ' with ' + this.foulcount + ' fouls ');
+    return this;
+  },
+  fullTime() {
+    this.score++
+    console.log('fullTime score is ' + this.score + ' with ' + this.foulcount + ' fouls ');
+    return this;
+  }
+}
+//modify each of the above object methods to enable function chaining as below:
+basketballGame.foul().basket().freeThrow().freeThrow().basket().threePointer().halfTime().fullTime();
+basketballGame.foul().foul().basket().freeThrow().freeThrow().basket().threePointer().halfTime().basket().fullTime();
+
+console.log("part 8")
+
+const sydney = {
+  name: 'Sydney',
+  population: 5_121_000,
+  state: 'NSW',
+  founded: '26 January 1788',
+  timezone: 'Australia/Sydney'
+}
+                             
+const newzealand = {
+  name: 'New Zealand',
+  population: 5_084_300,
+  state: 'NZ',
+  founded: '26 January 1642',
+  timezone: 'New Zealand/Wellington'
+
+}
+
+function printProperties(obj) {
+  for (let prop in obj) {
+    console.log(`${prop}: ${obj[prop]}`);
+  }
+}
+
+printProperties(sydney);
+printProperties(newzealand);
+
+console.log("part 9")
+
+let teamSports = ['Hockey', 'Cricket', 'Volleyball'];
+let dog1 = 'Bingo';
+let cat1 = { name: 'Fluffy', breed: 'Siberian' };
+
+moreSports = teamSports;
+
+moreSports.push('Soccer');
+moreSports.unshift('Cricket')
+
+console.log(moreSports);
+console.log(teamSports); 
+
+dog2 = dog1;
+dog2 = "Figo"
+
+console.log(dog1); 
+console.log(dog2);
+
+cat2 = cat1;
+cat2.name = "Geffory"
+
+console.log(cat1);
+console.log(cat2);
+
+//print orignal values
+
+console.log(teamSports); 
+console.log(dog1); 
+console.log(cat1); 
+
+//teamSports original teamSports = ['Hockey', 'Cricket', 'Volleyball'];
+//teamsports output [ 'Cricket', 'Hockey', 'Cricket', 'Volleyball', 'Soccer' ]
+//changed
+
+//dog1 original let dog1 = 'Bingo'; 
+//dog1 output Bingo
+//didnt change
+
+//cat1 original let cat1 = { name: 'Fluffy', breed: 'Siberian' };
+//cat1 output { name: 'Geffory', breed: 'Siberian' }
+//changed
+
