@@ -86,11 +86,12 @@ console.log(findMatchingAnimals('W'));
 console.log(animals)
 
 //4
-/* 
-function camelCase(cssProp){
+
+/* function camelCase(cssProp){
   if (cssProp.indexOf('-') == -1){
     return cssProp
   } 
+
   //split the string by dashes
   words = cssProp.split("-")
   //capitilize the first word
@@ -107,35 +108,133 @@ function camelCase(cssProp){
   return result;
 
 }
-*/
+ */
 function camelCase(cssProp){
     let words = cssProp.split("-")
 
     if (words.length > 1){
-        for (var i =0; i<words.length; i++) {
+        for (var i =1; i < words.length; i++) {
         words[i] = words[i][0].toUpperCase() + words[i].substring(1);
         }
     }
   return words.join('')
 }
 
-//b
-
-function camelCase1(cssProp) {
-  let words = cssProp.split("-");
-  if (words.length > 1) {
-    for (let word of words) {
-      word = word[0].toUpperCase() + word.substring(1);
-    }
-  }
-  return words.join("");
-}
-
- 
 console.log(camelCase('margin-left')) // marginLeft
 console.log(camelCase('background-image')) // backgroundImage
 console.log(camelCase('display')) // display
 
+//b
+/*   if (words.length > 1) {
+    for (let word of words) {
+      word = word[0].toUpperCase() + word.substring(1);
+    }
+  }
+  return words.join(""); */
+/*  */
+/* const colors = ['red', 'green', 'blue']; */
+
+/* function camelCase(cssProp) {
+  let words = cssProp.split('-');
+  let camelString = '';
+  words.forEach(word => {
+ */
+
+/*     if (camelString.length == 0) {
+      //don't capitalise the first word
+      camelString = word;
+      }
+      else {
+      camelString += word.charAt(0).toUpperCase() + word.substring(1)
+      }
+      });
+      return camelString;
+      }
+      const camelCase2 = (cssProp) => {
+      let camelString = '';
+      for (let word of cssProp.split('-')) {
+      camelString += (camelString.length == 0) ? word : word.charAt(0).toUpperCase() +
+      word.substring(1);
+      }
+      return camelString;
+      } */
+
+/*       if (camelString.length == 0) {
+        //don't capitalise the first word
+        camelString = word;
+        }
+        else {
+        camelString += word.charAt(0).toUpperCase() + word.substring(1)
+        }
+        });
+        return camelString;
+        }
+        const camelCase2 = (cssProp) => {
+        let camelString = '';
+        for (let word of cssProp.split('-')) {
+        camelString += (camelString.length == 0) ? word : word.charAt(0).toUpperCase() +
+        word.substring(1);
+        }
+        return camelString;
+        }if (camelString.length == 0) {
+        //don't capitalise the first word
+        camelString = word;
+        }
+        else {
+        camelString += word.charAt(0).toUpperCase() + word.substring(1)
+        }
+        });
+        return camelString;
+        }
+        const camelCase2 = (cssProp) => {
+        let camelString = '';
+        for (let word of cssProp.split('-')) {
+        camelString += (camelString.length == 0) ? word : word.charAt(0).toUpperCase() +
+        word.substring(1);
+        }
+        return camelString;
+        } */
+function camelCase1(cssProp) {
+  let words = cssProp.split("-");
+/* words = (""); */
+result = ("");
+
+  words.forEach(word => {if (result.length > 1) {result = word} else result = result[0].toUpperCase() + result.substring(1); }); return result; 
+
+}
+
 console.log(camelCase1('margin-left')) // marginLeft
 console.log(camelCase1('background-image')) // backgroundImage
 console.log(camelCase1('display')) // display
+
+//c) with and without the conditional operator.
+
+/* function camelCase2(cssProp) {
+  let words = cssProp.split("-");
+
+  return words.length > 1
+
+   ? words.map((words,index)) => index === 0 ? word : word[0].toUpperCase() + word.substring(1)).join("") : cssProp;
+
+} */
+
+//5
+//a It is printing a string and it cant compute a string
+let twentyCents = 0.20
+let fixedTwenty = twentyCents.toFixed(2); 
+console.log(`${fixedTwenty}`)
+//b
+
+function currencyAddition(float1, float2) {
+  // Convert the input floats to numbers with two decimal places
+  const num1 = Number(float1.toFixed(2));
+  const num2 = Number(float2.toFixed(2));
+  
+  // Add the two numbers and return the result
+  return num1 + num2;
+}
+
+console.log(currencyAddition(0.2, 0.3))
+
+//c
+
