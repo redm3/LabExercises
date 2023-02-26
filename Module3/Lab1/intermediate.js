@@ -194,9 +194,9 @@ console.log(camelCase('display')) // display
         }
         return camelString;
         } */
-function camelCase1(cssProp) {
+/* function camelCase1(cssProp) {
   let words = cssProp.split("-");
-/* words = (""); */
+
 result = ("");
 
   words.forEach(word => {if (result.length > 1) {result = word} else result = result[0].toUpperCase() + result.substring(1); }); return result; 
@@ -206,7 +206,7 @@ result = ("");
 console.log(camelCase1('margin-left')) // marginLeft
 console.log(camelCase1('background-image')) // backgroundImage
 console.log(camelCase1('display')) // display
-
+ */
 //c) with and without the conditional operator.
 
 /* function camelCase2(cssProp) {
@@ -236,5 +236,71 @@ function currencyAddition(float1, float2) {
 
 console.log(currencyAddition(0.2, 0.3))
 
-//c
+//c, d
 
+
+/* function currencyOperation(float1, float2, operation , numDecimals) {
+  let result;
+
+  switch(operation) {
+    case '+':
+      result = float1 + float2;
+      break;
+    case '-':
+      result = float1 - float2;
+      break;
+    case '*':
+      result = float1 * float2;
+      break;
+    case '/':
+      result = float1 / float2;
+      break;
+    default:
+      console.log('Invalid operation');
+      return null;
+  }
+  result = Number(result.toFixed(numDecimals));
+  return result
+
+}
+
+let float1 = 1.50;
+let float2 = 5.25;
+let operation = '+';
+let result = currencyOperation(float1, float2, operation);
+console.log(result); 
+ */
+function currencyAddition(float1, float2) {
+  return currencyOperation(float1, float2, '+');
+}
+
+function currencyOperation(float1, float2, operation, numDecimals = 2) {
+  const factor = 10 ** numDecimals;
+  const result = {
+    '+': (float1 + float2),
+    '-': (float1 - float2),
+    '*': (float1 * float2),
+    '/': (float1 / float2),
+  }[operation];
+  
+  return Math.round(result * factor) / factor;
+}
+
+
+console.log(0.3 == currencyAddition(0.1, 0.2)) // true
+console.log(0.3 == currencyOperation(0.1, 0.2, '+')) // true
+
+//6
+
+const colours = ['red', 'green', 'blue', 'yellow', 'orange', 'red', 'blue', 'yellow'];
+const testScores = [55, 84, 97, 63, 55, 32, 84, 91, 55, 43];
+
+function unique(duplicatesArray) {
+  const uniqueArray = duplicatesArray.filter((value, index, array) => array.indexOf(value) === index);
+  return uniqueArray;
+}
+
+console.log(unique(colours)); // [ 'red', 'green', 'blue', 'yellow', 'orange' ]
+console.log(unique(testScores)); // [ 55, 84, 97, 63, 32, 91, 43 ]
+
+//7

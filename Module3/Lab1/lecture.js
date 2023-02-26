@@ -165,3 +165,59 @@ const fruits = ['apple', 'banana', 'orange', 'pear'];
 const index = fruits.indexOf('orange');
 
 console.log(index);
+
+
+//reduce
+
+const reducenumberarray = [1, 2, 3, 4, 5];
+const sum = reducenumberarray.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+console.log(sum); // output: 15
+
+//sort our people by last name
+
+const people = [
+  {firstName: 'Wendy', lastName: 'Darton', age: 52, location: 'QLD'},
+  {firstName: 'Steven', lastName: 'Williams', age: 41, location: 'NSW'},
+  {firstName: 'Phillip', lastName: 'Robertson', age: 38, location: 'VIC'},
+  {firstName: 'Connor', lastName: 'Edmonds', age: 24, location: 'NZ'},
+  {firstName: 'Sheila', lastName: 'Horne', age: 37, location: 'QLD'},
+]
+
+
+/* people.filter(person => person.location == 'QLD').sort(person1,person2) => {
+
+} */
+
+//use find and map to get the first name of the person living in nz
+//find
+const firstNameNZ = people
+  .find(person => person.location === 'NZ') // find the person living in NZ
+  .firstName; // get the first name of that person
+
+console.log(firstNameNZ); 
+//map
+const firstNameNZ1 = people
+  .filter(person => person.location === 'NZ') // filter the people living in NZ
+  .map(person => person.firstName)[0]; // get the first name of the first person in the filtered array
+
+console.log(firstNameNZ1);
+
+//use split, map and join to change the months into their short 3 letter versions:
+let months = 'Januart,February,March,April,May,June,July,August,September,October,November,December';
+
+// split the string into an array of month names
+let monthArray = months.split(',');
+// map each month name to its first 3 letter month name
+let threeMonthArray = monthArray.map(function(month) {
+  return month.slice(0, 3);
+});
+// join 
+let shortMonths1 = threeMonthArray.join(',');
+console.log(shortMonths1)
+
+
+//In the Philippines they refer to the 'ber' (brr) months as the colder part of the year. Try and return an array of just the ber months
+
+let berMonths = months.split(',').filter(month => month.endsWith('ber'));
+console.log(berMonths);
+
