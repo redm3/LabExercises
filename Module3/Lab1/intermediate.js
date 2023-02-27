@@ -1,50 +1,50 @@
 //1
-function ucFirstLetters(str){
-    //split the above string into an array of strings 
-    //whenever a blank space is encountered
-    const array = str.split(" ")
-    //loop through each element of the array and capitalize the first letter.
-    for (var i =0; i<array.length; i++) {
-        array[i] = array[i].charAt(0).toUpperCase() + array[i].slice(1);
-    }
-    //Join all the elements of the array back into a string 
-    //using a blankspace as a separator 
-    const result = array.join(" ");
-    /* console.log(result); */
-    return result;
+function ucFirstLetters(str) {
+  //split the above string into an array of strings 
+  //whenever a blank space is encountered
+  const array = str.split(" ")
+  //loop through each element of the array and capitalize the first letter.
+  for (var i = 0; i < array.length; i++) {
+    array[i] = array[i].charAt(0).toUpperCase() + array[i].slice(1);
+  }
+  //Join all the elements of the array back into a string 
+  //using a blankspace as a separator 
+  const result = array.join(" ");
+  /* console.log(result); */
+  return result;
 }
 
-console.log(ucFirstLetters("los angeles") ) //Los Angeles
+console.log(ucFirstLetters("los angeles")) //Los Angeles
 //https://flexiple.com/javascript/javascript-capitalize-first-letter/
 
 //2
 function truncate(fullString, maxChars) {
-    //return a truncated version of fullString that is maxChars characters long
-    if (fullString.length <= maxChars){
-      return fullString;
-      //add a ... to the truncated string if it was longer than max Chars
-    } else{
-      return fullString.substring(0,maxChars) + "..."
-    }
-    //test with both long and short strings
+  //return a truncated version of fullString that is maxChars characters long
+  if (fullString.length <= maxChars) {
+    return fullString;
+    //add a ... to the truncated string if it was longer than max Chars
+  } else {
+    return fullString.substring(0, maxChars) + "..."
+  }
+  //test with both long and short strings
 }
 //2b
 let longString = "This is a super long string that has blah blah blah blah blah blah.";
 let shortString = "Short string.";
 
-console.log(truncate(longString,30));
-console.log(truncate(shortString,10));
+console.log(truncate(longString, 30));
+console.log(truncate(shortString, 10));
 
-function truncate1(fullString1, maxChars1){
-    return fullString1.length >= maxChars1 ? fullString1.substring(0,maxChars1) + "..." : fullString1;
+function truncate1(fullString1, maxChars1) {
+  return fullString1.length >= maxChars1 ? fullString1.substring(0, maxChars1) + "..." : fullString1;
 }
 
 let longString1 = "This is a super long string that has blah blah blah blah blah blah.";
 let shortString1 = "Short string.";
 
 
-console.log(truncate1(longString1,30));
-console.log(truncate1(shortString1,10));
+console.log(truncate1(longString1, 30));
+console.log(truncate1(shortString1, 10));
 
 
 //3
@@ -52,15 +52,15 @@ const animals = ['Tiger', 'Giraffe']
 //a
 animals.push("Pringles", "Hippo")
 //b
-animals.unshift("Dog","walrus")
+animals.unshift("Dog", "walrus")
 //c
 animals.sort();
 //d
-function replaceMiddleAnimal(newValue){
-//that replaces the value in the middle of the animals array with newValue
-    const middle = Math.floor((animals.length)/2);
-    animals[middle] = newValue;
-    
+function replaceMiddleAnimal(newValue) {
+  //that replaces the value in the middle of the animals array with newValue
+  const middle = Math.floor((animals.length) / 2);
+  animals[middle] = newValue;
+
 
 
 }
@@ -68,14 +68,14 @@ function replaceMiddleAnimal(newValue){
 replaceMiddleAnimal("Rhino")
 //e
 function findMatchingAnimals(beginsWith) {
-    const matchingAnimals = [];
-    for (let i = 0; i < animals.length; i++) {
-      if (animals[i].toLowerCase().startsWith(beginsWith.toLowerCase())) {
-        matchingAnimals.push(animals[i])
-      }
+  const matchingAnimals = [];
+  for (let i = 0; i < animals.length; i++) {
+    if (animals[i].toLowerCase().startsWith(beginsWith.toLowerCase())) {
+      matchingAnimals.push(animals[i])
     }
-    return matchingAnimals
   }
+  return matchingAnimals
+}
 
 console.log(findMatchingAnimals('D'));
 console.log(findMatchingAnimals('G'));
@@ -109,14 +109,14 @@ console.log(animals)
 
 }
  */
-function camelCase(cssProp){
-    let words = cssProp.split("-")
+function camelCase(cssProp) {
+  let words = cssProp.split("-")
 
-    if (words.length > 1){
-        for (var i =1; i < words.length; i++) {
-        words[i] = words[i][0].toUpperCase() + words[i].substring(1);
-        }
+  if (words.length > 1) {
+    for (var i = 1; i < words.length; i++) {
+      words[i] = words[i][0].toUpperCase() + words[i].substring(1);
     }
+  }
   return words.join('')
 }
 
@@ -221,7 +221,7 @@ console.log(camelCase1('display')) // display
 //5
 //a It is printing a string and it cant compute a string
 let twentyCents = 0.20
-let fixedTwenty = twentyCents.toFixed(2); 
+let fixedTwenty = twentyCents.toFixed(2);
 console.log(`${fixedTwenty}`)
 //b
 
@@ -229,7 +229,7 @@ function currencyAddition(float1, float2) {
   // Convert the input floats to numbers with two decimal places
   const num1 = Number(float1.toFixed(2));
   const num2 = Number(float2.toFixed(2));
-  
+
   // Add the two numbers and return the result
   return num1 + num2;
 }
@@ -282,7 +282,7 @@ function currencyOperation(float1, float2, operation, numDecimals = 2) {
     '*': (float1 * float2),
     '/': (float1 / float2),
   }[operation];
-  
+
   return Math.round(result * factor) / factor;
 }
 
@@ -311,60 +311,169 @@ const books = [
   { id: 3, title: '1984', author: 'George Orwell', year: 1949 },
   { id: 4, title: 'Brave New World', author: 'Aldous Huxley', year: 1932 },
   { id: 5, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951 },
-  ];
+];
 //a
-  function getBookTitle(bookId){
-    const book = books.find(book => book.id == bookId); return book ? book.title : null
-  }
+function getBookTitle(bookId) {
+  const book = books.find(book => book.id == bookId); return book ? book.title : null
+}
 
-  console.log(getBookTitle(1));
- //b
-  function getOldBooks() {
-    return books.filter(book => book.year <1950);
+console.log(getBookTitle(1));
+//b
+function getOldBooks() {
+  return books.filter(book => book.year < 1950);
 
-  }
-  console.log(getOldBooks());
+}
+console.log(getOldBooks());
 
-  //c
-  function addGenre() {
-    return books.map(book => ({ ...book, genre: 'classic' }));
-  }
-  
-  console.log(addGenre());
+//c
+function addGenre() {
+  return books.map(book => ({ ...book, genre: 'classic' }));
+}
 
-  //d
-  function getTitles(authorInitial) {
-    return books.filter(book => book.author.startsWith(authorInitial)).map(book => book.title);
-  }
-  
-  console.log(getTitles('F'));
-  
-  //e
+console.log(addGenre());
 
-  function latestBook() {
-    return books.reduce((latest, book) => book.year > latest.year ? book : latest, books[0]);
-  }
-  
-  console.log(latestBook());
+/* const addGenre = () => book.map(book => book.genre = 'classic')
+addGenre() */
 
-  //8
+//d
+function getTitles(authorInitial) {
+  return books.filter(book => book.author.startsWith(authorInitial)).map(book => book.title);
+}
+
+console.log(getTitles('F'));
+
+//e
+
+function latestBook() {
+  return books.reduce((latest, book) => book.year > latest.year ? book : latest, books[0]);
+}
+
+console.log(latestBook());
+
+//8
 const phoneBookABC = new Map() //an empty map to begin with
 phoneBookABC.set('Annabelle', '0412312343')
 phoneBookABC.set('Barry', '0433221117')
 phoneBookABC.set('Caroline', '0455221182')
 
 //a Create a new phoneBookDEF Map to store names beginning with D, E or F
+/* const phoneBookDEF = new Map(); */
+/* phoneBookDEF.set('David', '0412345678'); */
+/* console.log(phoneBookDEF)
+ */
+//b
+const phoneBookDEF = new Map([
+  ['David', '0412345678'],
+  ['Emma', '0422333444'],
+  ['Frank', '0466778899']
+]);
+phoneBookDEF.set('David', '0412345678');
+console.log(phoneBookDEF)
 
-const phoneBookDEF = new Map();
+//c
+phoneBookABC.set('Caroline', '0477123456');
 
-for (const [name, phone] of phoneBookABC) {
-  if (['D', 'E', 'F'].some(initial => name.startsWith(initial))) {
-    phoneBookDEF.set(name, phone);
+//D
+function printPhoneBook(contacts) {
+  for (const [name, phone] of contacts) {
+    console.log(`${name}: ${phone}`);
   }
 }
 
-console.log(phoneBookDEF)
+printPhoneBook(phoneBookABC);
+printPhoneBook(phoneBookDEF);
 
+//e
+const phoneBook = new Map([...phoneBookABC, ...phoneBookDEF]);
 
+//f
+// Get an array of all the keys in the phoneBook map
+const names = Array.from(phoneBook.keys());
 
-  
+// Iterate over the names and print them out
+for (const name of names) {
+  console.log(name);
+}
+
+//9
+//a
+let salaries = {
+  "Timothy": 35000,
+  "David": 25000,
+  "Mary": 55000,
+  "Christina": 75000,
+  "James": 43000
+};
+
+function sumSalaries(salaries) {
+  let sum = 0;
+  for (let salary of Object.values(salaries)) {
+    sum += salary;
+  }
+
+  return sum; 
+}
+
+const totalSalaries = sumSalaries(salaries);
+console.log(totalSalaries);
+
+//b
+
+function topEarner(salaries) {
+  let highestSalary = 0;
+  let topEarnerName = "";
+
+  for (let [name, salary] of Object.entries(salaries)) {
+    if (salary > highestSalary) {
+      highestSalary = salary;
+      topEarnerName = name;
+    }
+  }
+  return topEarnerName;
+}
+console.log(topEarner(salaries)); 
+
+//10
+const today = new Date();
+console.log('Current time is ' + today.toLocaleTimeString())
+console.log(today.getHours() + ' hours have passed so far today')
+
+//a Print the total number of minutes that have passed so far today
+const minutes = today.getHours() * 60 + today.getMinutes();
+console.log(minutes + ' minutes have passed so far today')
+
+//b) Print the total number of seconds that have passed so far today
+const seconds = minutes * 60 + today.getSeconds();
+console.log(seconds + ' seconds have passed so far today');
+/* console.log(today.getSeconds() + ' seconds have passed so far today') */
+
+//c) Calculate and print your age as: 'I am x years, y months and z days old'
+const birthDate = new Date('1997-06-17');
+const currentDate = new Date();
+
+const diffInMilliseconds =  currentDate - birthDate
+const diffInSeconds =  Math.floor(diffInMilliseconds / 1000);
+
+const secondsInYear = 31536000; // 365 days * 24 hours * 60 minutes * 60 seconds
+const secondsInMonth = 2628000; // 30.44 days * 24 hours * 60 minutes * 60 seconds
+const secondsInDay = 86400; // 24 hours * 60 minutes * 60 seconds
+
+const x = Math.floor(diffInSeconds / secondsInYear);
+const y = Math.floor((diffInSeconds % secondsInYear) / secondsInMonth);
+const z = Math.floor((diffInSeconds % secondsInMonth) / secondsInDay);
+z
+console.log(`I am ${x} years, ${y} months, and ${z} days old.`);
+
+//d) Write a function daysInBetween(date1, date2) which calculates and returns the amount
+//of days in between the two given dates.
+
+function daysInBetween(date1, date2) {
+  const diffInTime = date2.getTime() - date1.getTime();
+  const diffInDays = Math.round(diffInTime / (1000 * 60 * 60 * 24) );
+  return diffInDays;
+}
+
+const date1 = new Date("2021-02-01");
+const date2 = new Date("2022-02-10");
+const days = daysInBetween(date1, date2);
+console.log(`There are ${days} between ${date1} and ${date2}`);
