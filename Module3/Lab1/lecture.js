@@ -221,3 +221,51 @@ console.log(shortMonths1)
 let berMonths = months.split(',').filter(month => month.endsWith('ber'));
 console.log(berMonths);
 
+//maps
+const plantNames = new Map();
+plantNames.set('Blueberry', 'Vaccinium');
+plantNames.set('Daylily', 'Hemerocallis');
+plantNames.set('Foxglove', 'Digitalis');
+plantNames.set('Lavender', 'Lavandula');
+plantNames.set('Turmeric', 'Curcuma Longa')
+
+// Get the value for a specific key
+const value = plantNames.get('Lavender');
+console.log(value); // Lavandula
+
+// Check if a key exists in the Map
+const hasKey = plantNames.has('Foxglove');
+console.log(hasKey); // true
+
+// Set a new key-value pair
+plantNames.set('Rosemary', 'Rosmarinus');
+console.log(plantNames); 
+
+//practice for … of loop with keys or entries or values
+const foodMap = new Map();
+foodMap.set('🍔', 'Burger');
+foodMap.set('🌭', 'Hot Dog');
+foodMap.set('🍟', 'French Fries');
+
+for (const emoji of foodMap.keys()) {
+  console.log(emoji);
+}
+
+//keys, values, entries
+for (let commonPlant of plantNames.keys()) {
+  console.log('#1: ( leys, lookup value with get)' + commonPlant + ' latin name is ' + plantNames.get(commonPlant));
+}
+
+for (let latinPlant of plantNames.values()) { 
+  console.log('#2: (values only)' + latinPlant);
+}
+
+for (let plant of plantNames.entries()) {
+  console.log('#3: (indexed entries)' + plant[0] + ' latin name is ' + plant[1]);
+}
+
+for (let[commonPlantName,latinPlantName] of plantNames) {
+  console.log('#3: (destructed entries)' + commonPlantName + ' latin name is ' + latinPlantName);
+}
+
+

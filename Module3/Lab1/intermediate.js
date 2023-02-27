@@ -304,3 +304,67 @@ console.log(unique(colours)); // [ 'red', 'green', 'blue', 'yellow', 'orange' ]
 console.log(unique(testScores)); // [ 55, 84, 97, 63, 32, 91, 43 ]
 
 //7
+
+const books = [
+  { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925 },
+  { id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960 },
+  { id: 3, title: '1984', author: 'George Orwell', year: 1949 },
+  { id: 4, title: 'Brave New World', author: 'Aldous Huxley', year: 1932 },
+  { id: 5, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951 },
+  ];
+//a
+  function getBookTitle(bookId){
+    const book = books.find(book => book.id == bookId); return book ? book.title : null
+  }
+
+  console.log(getBookTitle(1));
+ //b
+  function getOldBooks() {
+    return books.filter(book => book.year <1950);
+
+  }
+  console.log(getOldBooks());
+
+  //c
+  function addGenre() {
+    return books.map(book => ({ ...book, genre: 'classic' }));
+  }
+  
+  console.log(addGenre());
+
+  //d
+  function getTitles(authorInitial) {
+    return books.filter(book => book.author.startsWith(authorInitial)).map(book => book.title);
+  }
+  
+  console.log(getTitles('F'));
+  
+  //e
+
+  function latestBook() {
+    return books.reduce((latest, book) => book.year > latest.year ? book : latest, books[0]);
+  }
+  
+  console.log(latestBook());
+
+  //8
+const phoneBookABC = new Map() //an empty map to begin with
+phoneBookABC.set('Annabelle', '0412312343')
+phoneBookABC.set('Barry', '0433221117')
+phoneBookABC.set('Caroline', '0455221182')
+
+//a Create a new phoneBookDEF Map to store names beginning with D, E or F
+
+const phoneBookDEF = new Map();
+
+for (const [name, phone] of phoneBookABC) {
+  if (['D', 'E', 'F'].some(initial => name.startsWith(initial))) {
+    phoneBookDEF.set(name, phone);
+  }
+}
+
+console.log(phoneBookDEF)
+
+
+
+  
