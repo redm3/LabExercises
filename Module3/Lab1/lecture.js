@@ -269,3 +269,29 @@ for (let[commonPlantName,latinPlantName] of plantNames) {
 }
 
 
+console.log(plantNames.keys())
+
+let plantNameArray = [...plantNames.keys()];
+
+const plantObject = Object.fromEntries(plantNames.entries())
+/* const plantMap = new Map(Object.entries()) */
+
+//foods 
+
+const foods = new Set(['pizza', 'chips', 'pasta', 'seafood', 'salad', 'noodles', 'vegetables']);
+
+foods.add('risotto')
+foods.add('pasta')
+
+console.log(foods)
+
+for (let food of foods) {
+  console.log('#1 (for ... of loop)' + food);
+
+}
+
+foods.forEach(food => console.log('#2: (forEach loop) ' + food))
+
+let foodsArray = Array.from(foods);
+foodsArray.sort().reverse()
+console.log(foodsArray)
