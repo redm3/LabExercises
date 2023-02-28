@@ -81,7 +81,9 @@ delayMsg1('#4: Not delayed at all');
 
 //c) Add a fifth test which uses a large delay time (greater than 10 seconds)
 
-setTimeout(() => delayMsg1('#3: Delayed by 10s'), 10000);
+setTimeout(() => delayMsg1('#5: Delayed by 10s'), 10000);
 
 //d) Use clearTimeout to prevent the fifth test from printing at all.
 
+const timeoutId = setTimeout(() => delayMsg1('#5: Delayed by 10s'), 10000);
+clearTimeout(timeoutId); // Cancel the timer
