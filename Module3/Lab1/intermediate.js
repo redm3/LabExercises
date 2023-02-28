@@ -109,7 +109,7 @@ console.log(animals)
 
 }
  */
-function camelCase(cssProp) {
+/* function camelCase(cssProp) {
   let words = cssProp.split("-")
 
   if (words.length > 1) {
@@ -118,7 +118,23 @@ function camelCase(cssProp) {
     }
   }
   return words.join('')
+} */
+function camelCase(cssProp) {
+  const words = cssProp.split("-")
+  let camelCasedString = '';
+
+  words.forEach(word => {
+    if (camelCasedString.length == 0) {
+      camelCasedString = word;
+    } else{
+      camelCasedString += word.charAt(0).toUpperCase() + word.substring(1);
+    }
+  })
+
+  return camelCasedString;
+
 }
+
 
 console.log(camelCase('margin-left')) // marginLeft
 console.log(camelCase('background-image')) // backgroundImage
@@ -344,8 +360,16 @@ console.log(getTitles('F'));
 
 //e
 
-function latestBook() {
+/* function latestBook() {
   return books.reduce((latest, book) => book.year > latest.year ? book : latest, books[0]);
+} */
+
+function latestBook(){
+  let mostRecentYear = 1900;
+  books.forEach(book => {
+    if (book.year > mostRecentYear) mostRecentYear = book.year;
+  });
+  return books.find(book => book.year == mostRecentYear);
 }
 
 console.log(latestBook());
@@ -469,7 +493,7 @@ console.log(`I am ${x} years, ${y} months, and ${z} days old.`);
 
 function daysInBetween(date1, date2) {
   const diffInTime = date2.getTime() - date1.getTime();
-  const diffInDays = Math.round(diffInTime / (1000 * 60 * 60 * 24) );
+  const diffInDays = Math.floor(diffInTime / (1000 * 60 * 60 * 24) );
   return diffInDays;
 }
 

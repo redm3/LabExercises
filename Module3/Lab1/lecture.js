@@ -295,3 +295,53 @@ foods.forEach(food => console.log('#2: (forEach loop) ' + food))
 let foodsArray = Array.from(foods);
 foodsArray.sort().reverse()
 console.log(foodsArray)
+
+//objects 
+
+function printWeather() {
+/*   let currentTemp = 28; //degrees celcius
+  let maxTemp = 33;
+  let windSpeed = 5; //km/h
+  let forecast = 'Mostly sunny'; */
+  let [currentTemp, maxTemp, windSpeed, forecast] = [28, 33, 5, 'Mostly sunny']
+
+  console.log(`Today's weather forecast: ${forecast}, with a wind speed of ${windSpeed}km/h. The current temperature is ${currentTemp} with a max of ${maxTemp} degrees.`)
+}
+printWeather()
+
+/* let [currentTemp,maxTemp,windSpeed,forecast] = ['28','33','5','Mostly sunny'] */
+
+//get every second food
+/* const foods = new Set(['pizza', 'chips', 'pasta', 'seafood', 'salad', 'noodles', 'vegetables']); */
+
+let counter = 0;
+
+for (let food of foods) {
+  if (counter % 2 === 0) {
+    console.log(food);
+  }
+  counter++;
+}
+
+//write a destructuring for … of loop
+
+const plantNameslecture = new Map([
+  ['Blueberry', 'Vaccinium'],
+  ['Daylily', 'Hemerocallis'],
+  ['Foxglove', 'Digitalis'],
+  ['Lavender', 'Lavandula']
+])
+
+for (let [commonName, scientificName] of plantNames) {
+  console.log(`The scientific name of ${commonName} is ${scientificName}`);
+}
+
+
+//advanced part
+
+let globalCat = "cat" 
+
+function priontCat()
+{
+  console.log(globalCat)
+}
