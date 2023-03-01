@@ -127,40 +127,106 @@ setTimeout(printMe, 300); */
 function fibonacci() {
     let current = 0;
     let next = 1;
-  
+
     function calc() {
-      const temp = next;
-      next = current + next;
-      current = temp;
-      console.log(current);
+        const temp = next;
+        next = current + next;
+        current = temp;
+        console.log(current);
     }
-  
+
     return calc;
-  }
-  
-  function printFibonacci() {
+}
+
+function printFibonacci() {
     const calc = fibonacci();
     setInterval(calc, 1000);
-  }
-  
-  printFibonacci();
+}
 
-  function printFibonacciTimeouts() {
+printFibonacci();
+
+//4b
+
+function printFibonacciTimeouts() {
     let prev = 0;
     let curr = 1;
-  
-    function print() {
-      console.log(curr);
-      let next = prev + curr;
-      prev = curr;
-      curr = next;
-      setTimeout(print, 1000);
-    }
-  
-    setTimeout(print, 1000);
-  }
-  
-  printFibonacciTimeouts();
-  
-//c
 
+    function print() {
+        console.log(curr);
+        let next = prev + curr;
+        prev = curr;
+        curr = next;
+        setTimeout(print, 1000);
+    }
+
+    setTimeout(print, 1000);
+}
+
+printFibonacciTimeouts();
+
+//c
+function printFibonacciTimeoutsnested(limit) {
+    let count = 0;
+    let prev = 0;
+    let curr = 1;
+
+    function print() {
+        console.log(curr);
+        let next = prev + curr;
+        prev = curr;
+        curr = next;
+        count++;
+
+        if (count < limit) {
+            setTimeout(print, 1000);
+        }
+    }
+
+    setTimeout(print, 1000);
+}
+
+// print the first 10 Fibonacci numbers
+printFibonacciTimeoutsnested(10);
+
+//5
+
+let car = {
+    make: "Porsche",
+    model: '911',
+    year: 1964,
+    description() {
+
+        console.log(`This car is a ${this.make} ${this.model} from ${this.year}`);
+    }
+};
+car.description(); //works
+
+setTimeout(car.description, 200); //fails
+
+//a) Fix the setTimeout call by wrapping the call to car.description() inside a function
+
+
+setTimeout(() => car.description(), 200); 
+
+//b) Change the year for the car by creating a clone of the original and overriding it
+
+let car2 =  { ...car }
+car2.year = 1970;
+
+setTimeout(() => car2.description(), 400);
+
+//c) Does the delayed description() call use the original values or the new values from b)? Why?
+//no it does update the description for the orignal copy. THis is because a shallow copy is created where it then updates the clone the new value.
+
+//d) Use bind to fix the description method so that it can be called from within setTimeout without a wrapper function
+let car3 =  { ...car }
+car3.year = 1970;
+setTimeout(car3.description.bind(car3), 400);
+
+//e) Change another property of the car by creating a clone and overriding it, and test that setTimeout still uses the bound value from d)
+let car4 =  { ...car3 }
+car4.model = 'Taycan';
+car4.year = 2021;
+setTimeout(car3.description.bind(car4), 600);
+
+//6
