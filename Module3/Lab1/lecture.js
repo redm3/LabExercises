@@ -508,3 +508,4 @@ console.log(newUser.age); // output: 30
 
 newUser.age = 121; // this should not work
 console.log(newUser.age); // output: 30 (the value did not change) */
+

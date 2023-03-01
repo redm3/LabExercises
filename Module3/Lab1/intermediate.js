@@ -302,6 +302,8 @@ function currencyOperation(float1, float2, operation, numDecimals = 2) {
   return Math.round(result * factor) / factor;
 }
 
+//suppose to do switch 
+
 
 console.log(0.3 == currencyAddition(0.1, 0.2)) // true
 console.log(0.3 == currencyOperation(0.1, 0.2, '+')) // true
@@ -475,7 +477,7 @@ console.log(seconds + ' seconds have passed so far today');
 const birthDate = new Date('1997-06-17');
 const currentDate = new Date();
 
-const diffInMilliseconds =  currentDate - birthDate
+/* const diffInMilliseconds =  currentDate - birthDate
 const diffInSeconds =  Math.floor(diffInMilliseconds / 1000);
 
 const secondsInYear = 31536000; // 365 days * 24 hours * 60 minutes * 60 seconds
@@ -484,8 +486,12 @@ const secondsInDay = 86400; // 24 hours * 60 minutes * 60 seconds
 
 const x = Math.floor(diffInSeconds / secondsInYear);
 const y = Math.floor((diffInSeconds % secondsInYear) / secondsInMonth);
-const z = Math.floor((diffInSeconds % secondsInMonth) / secondsInDay);
-z
+const z = Math.floor((diffInSeconds % secondsInMonth) / secondsInDay); */
+
+let x = today.getFullYear() - birthDate.getFullYear();
+let y = today.getMonth() - birthDate.getMonth();
+let z = today.getDate() - birthDate.getDate();
+
 console.log(`I am ${x} years, ${y} months, and ${z} days old.`);
 
 //d) Write a function daysInBetween(date1, date2) which calculates and returns the amount
