@@ -388,7 +388,7 @@ const repeatInterval = (delay, limit) => {
   }, delay);
 };
 
-repeatInterval(1000, 10);
+repeatInterval(1, 10);
 
 
 function repeatTimeout(delay, limit) {
@@ -439,7 +439,7 @@ function slow(x, y, z) {
   }
   return random;
 }
-
+//1. change the number of argument to slow
 slow = cachingDecorator(slow);
 
 console.time('slow no caching')
@@ -450,4 +450,61 @@ console.time('slow with caching')
 console.log( "Again: " + slow(1, 2, 10) ); // slow(1) result returned from cache
 console.timeEnd('slow with caching')
 
-//1. change the number of argument to slow
+
+
+//add an age property via getters and setters that can't be less than 0 or more than 120
+let newUser = {
+  //_age: 0, // the actual age value is stored in this property with an underscore prefix to indicate that it's private
+
+  get name() {
+    return this._name;
+  },
+
+  set name(value) {
+    if (value.length < 4) {
+      console.log(value + " Name is too short, need at least 4 characters");
+      return;
+    }
+    this._name = value;
+  },
+
+  get age() {
+    return this._age;
+  },
+
+  set age(value) {
+    if (value < 0 || value > 120) {
+      console.log(value + " Invalid age, must be between 0 and 120");
+      return;
+    }
+    this._age = value;
+  }
+};
+
+let name1 = "Marco";
+let name2 = "jo";
+let age1 = 25;
+let age2 = 121;
+
+newUser.name = name1;
+console.log(newUser.name);
+
+newUser.name = name2;
+console.log(newUser.name); 
+
+newUser.age = age1; 
+console.log(newUser.age); 
+
+newUser.age = age2; 
+console.log(newUser.age); 
+/* newUser.name = "Marco";
+console.log(newUser.name);
+
+newUser.name = "jo";
+console.log(newUser.name); 
+
+newUser.age = 30; // this should work
+console.log(newUser.age); // output: 30
+
+newUser.age = 121; // this should not work
+console.log(newUser.age); // output: 30 (the value did not change) */
