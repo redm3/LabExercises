@@ -47,15 +47,14 @@ function makeCounter2(startFrom, incrementBy) {
     };
 }
 
-let counter4 = makeCounter1(0,1);
+let counter4 = makeCounter1(0, 1);
 counter4(); // 8
 counter4(); // 9
 
 //2
 
-function delayMsg(msg)
-{
-console.log(`This message will be printed after a delay: ${msg}`)
+function delayMsg(msg) {
+    console.log(`This message will be printed after a delay: ${msg}`)
 }
 setTimeout(delayMsg, 100, '#1: Delayed by 100ms');
 setTimeout(delayMsg, 20, '#2: Delayed by 20ms');
@@ -81,12 +80,37 @@ delayMsg1('#4: Not delayed at all');
 
 //c) Add a fifth test which uses a large delay time (greater than 10 seconds)
 
-setTimeout(() => delayMsg1('#5: Delayed by 10s'), 10000);
+const timeoutId = setTimeout(() => delayMsg1('#5: Delayed by 10s'), 10000);
 
 //d) Use clearTimeout to prevent the fifth test from printing at all.
 /* clearTimeout(timeoutId);  */
-
-const timeoutId = setTimeout(() => delayMsg1('#5: Delayed by 10s'), 10000);
+/* const timeoutId = setTimeout(() => delayMsg1('#5: Delayed by 10s'), 10000); */
 
 clearTimeout(timeoutId); // Cancel the timer
+
+//3 a
+//b
+
+const debounce = (func, ms) => {
+    let timeoutId;
+    return () => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(func, ms);
+    }
+}
+
+
+function printMe(func) {
+    console.log('printing debounced message')
+}
+
+printMe = debounce(printMe, 1000); //create this debounce function for a)
+
+//fire off 3 calls to printMe within 300ms - only the LAST one should print, after
+//1000ms of no calls
+
+setTimeout(printMe, 100);
+setTimeout(printMe, 200);
+setTimeout(printMe, 300);
+
 
