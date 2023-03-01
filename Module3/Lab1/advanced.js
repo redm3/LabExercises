@@ -84,6 +84,9 @@ delayMsg1('#4: Not delayed at all');
 setTimeout(() => delayMsg1('#5: Delayed by 10s'), 10000);
 
 //d) Use clearTimeout to prevent the fifth test from printing at all.
+/* clearTimeout(timeoutId);  */
 
 const timeoutId = setTimeout(() => delayMsg1('#5: Delayed by 10s'), 10000);
+
 clearTimeout(timeoutId); // Cancel the timer
+
