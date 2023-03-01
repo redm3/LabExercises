@@ -206,11 +206,11 @@ setTimeout(car.description, 200); //fails
 //a) Fix the setTimeout call by wrapping the call to car.description() inside a function
 
 
-setTimeout(() => car.description(), 200); 
+setTimeout(() => car.description(), 200);
 
 //b) Change the year for the car by creating a clone of the original and overriding it
 
-let car2 =  { ...car }
+let car2 = { ...car }
 car2.year = 1970;
 
 setTimeout(() => car2.description(), 400);
@@ -219,14 +219,21 @@ setTimeout(() => car2.description(), 400);
 //no it does update the description for the orignal copy. THis is because a shallow copy is created where it then updates the clone the new value.
 
 //d) Use bind to fix the description method so that it can be called from within setTimeout without a wrapper function
-let car3 =  { ...car }
+let car3 = { ...car }
 car3.year = 1970;
 setTimeout(car3.description.bind(car3), 400);
 
 //e) Change another property of the car by creating a clone and overriding it, and test that setTimeout still uses the bound value from d)
-let car4 =  { ...car3 }
+let car4 = { ...car3 }
 car4.model = 'Taycan';
 car4.year = 2021;
 setTimeout(car3.description.bind(car4), 600);
 
 //6
+//a) Use the example multiply function below to test it with, as above, and assume that all
+//delayed functions will take two parameters
+
+function multiply(a, b) {
+    console.log(a * b);
+}
+multiply.delay(500)(5, 5); // prints 25 after 500 milliseconds
