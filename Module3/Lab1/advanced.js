@@ -90,27 +90,77 @@ clearTimeout(timeoutId); // Cancel the timer
 
 //3 a
 //b
+//c
 
 const debounce = (func, ms) => {
     let timeoutId;
-    return () => {
+    return (...args) => {
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(func, ms);
+        timeoutId = setTimeout(() => {
+            func(...args);
+        }, ms);
     }
 }
 
-
-function printMe(func) {
-    console.log('printing debounced message')
+function printMe(msg) {
+    console.log(`printing debounced message: ${msg}`);
 }
 
-printMe = debounce(printMe, 1000); //create this debounce function for a)
+/* printMe = debounce(printMe, 1000);  */
+
+const debounced = debounce(printMe, 1000);
+debounced("MARCO WELLS");
+
+//create this debounce function for a)
 
 //fire off 3 calls to printMe within 300ms - only the LAST one should print, after
 //1000ms of no calls
 
-setTimeout(printMe, 100);
+/* setTimeout(printMe, 100);
 setTimeout(printMe, 200);
-setTimeout(printMe, 300);
+setTimeout(printMe, 300); */
 
+/* setTimeout(() => debouncedPrintMe('First call'), 100); */
+
+//4
+
+function fibonacci() {
+    let current = 0;
+    let next = 1;
+  
+    function calc() {
+      const temp = next;
+      next = current + next;
+      current = temp;
+      console.log(current);
+    }
+  
+    return calc;
+  }
+  
+  function printFibonacci() {
+    const calc = fibonacci();
+    setInterval(calc, 1000);
+  }
+  
+  printFibonacci();
+
+  function printFibonacciTimeouts() {
+    let prev = 0;
+    let curr = 1;
+  
+    function print() {
+      console.log(curr);
+      let next = prev + curr;
+      prev = curr;
+      curr = next;
+      setTimeout(print, 1000);
+    }
+  
+    setTimeout(print, 1000);
+  }
+  
+  printFibonacciTimeouts();
+  
+//c
 
