@@ -233,11 +233,81 @@ setTimeout(car3.description.bind(car4), 600);
 //a) Use the example multiply function below to test it with, as above, and assume that all
 //delayed functions will take two parameters
 
-function multiply(a, b) {
-    console.log(a * b);
+Function.prototype.delay = function (delay) {
+    let func = this
+
+    return function () {
+        let args = arguments
+        setTimeout(function () {
+            func.apply(null, args)
+        }, delay)
+    }
 }
+
+
+function multiply() {
+    let args = Array.from(arguments);
+    let product = 1;
+
+    for (let i = 0; i < args.length; i++) {
+        product *= args[i];
+    }
+
+    console.log(product);
+}
+
+
 multiply.delay(500)(5, 5); // prints 25 after 500 milliseconds
 
 //b) Use apply to improve your solution so that delayed functions can take any number of
 //parameters
 
+multiply.delay(1000)(5, 5, 4);
+
+// c) Modify multiply to take 4 parameters and multiply all of them, and test that your
+//delay prototype function still works.
+
+multiply.delay(1000)(5, 5, 4, 10);
+
+//7
+//a) Define a custom toString method for the Person object that will format and print
+//their details
+
+function Person(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+
+    this.toString = function() {
+        return `${this.name}, ${this.age}, ${this.gender}`;
+    }
+}
+const person1 = new Person('James Brown', 73, 'male')
+console.log('person1: ' + person1); //prints person1: [object Object]
+
+//b) Test your method by creating 2 different people using the below constructor function
+//and printing them
+
+const person2 = new Person('Marco Wells', 24, 'male');
+console.log('person2: ' + person2); 
+
+//c) Create a new constructor function Student that uses call to inherit from Person and
+//add an extra property cohort
+
+function Student(name, age, gender, cohort) {
+    Person.call(this, name, age, gender);
+    this.cohort = cohort;
+
+    this.toString = function() {
+        return `${this.name}, ${this.age}, ${this.gender}, ${this.cohort}`;
+      }
+}
+
+//d) Add a custom toString for Student objects that formats and prints their details. Test
+//with 2 students.
+
+const student1 = new Student('Luke Barker', 24, 'male', '2023');
+console.log('student1: ' + student1.toString()); 
+
+const student2 = new Student('Jo', 40, 'female', '2023');
+console.log('student2: ' + student2.toString()); 
