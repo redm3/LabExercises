@@ -413,19 +413,19 @@ function cachingDecorator(pureFunction) {
   const cache = new Map();
   const outerContext = this;
 
-  return function() {
-      //let x = arguments[0];
-      let funcParams = Array.from(arguments).join('')
-      if (cache.has(funcParams)) { // if there's such key in cache
-          console.log('returned cached value for '+funcParams)
-          return cache.get(funcParams); // read the result from it
-      }
-      //let result = pureFunction.call(this, ...arguments); //needed for object functions that reference 'this' for context
-      let result = pureFunction.apply(outerContext, arguments); //can also use apply - very similar, only difference is in handling arguments
-      //let result = pureFunction(x) //works fine for standalone functions that don't rely on 'this' for context
-      cache.set(funcParams, result); // and cache (remember) the result
-      console.log('generated new value '+result+' for '+funcParams)
-      return result;
+  return function () {
+    //let x = arguments[0];
+    let funcParams = Array.from(arguments).join('')
+    if (cache.has(funcParams)) { // if there's such key in cache
+      console.log('returned cached value for ' + funcParams)
+      return cache.get(funcParams); // read the result from it
+    }
+    //let result = pureFunction.call(this, ...arguments); //needed for object functions that reference 'this' for context
+    let result = pureFunction.apply(outerContext, arguments); //can also use apply - very similar, only difference is in handling arguments
+    //let result = pureFunction(x) //works fine for standalone functions that don't rely on 'this' for context
+    cache.set(funcParams, result); // and cache (remember) the result
+    console.log('generated new value ' + result + ' for ' + funcParams)
+    return result;
   };
 }
 function slow(x, y, z) {
@@ -433,9 +433,8 @@ function slow(x, y, z) {
   let goal = Math.floor(Math.random() * z * 1_000_000) //random number between 0 and a million times x
   console.log(`slow(${x}, ${y} , ${z}): randomly generated goal for ${z * 1_000_000} is ${goal}`)
   let random = 0;
-  for (let i = 0; i < goal; i++)
-  {
-      random++
+  for (let i = 0; i < goal; i++) {
+    random++
   }
   return random;
 }
@@ -443,11 +442,11 @@ function slow(x, y, z) {
 slow = cachingDecorator(slow);
 
 console.time('slow no caching')
-console.log( slow(1, 2, 10) ); // slow(1) is run, cached and the result returned
+console.log(slow(1, 2, 10)); // slow(1) is run, cached and the result returned
 console.timeEnd('slow no caching')
 
 console.time('slow with caching')
-console.log( "Again: " + slow(1, 2, 10) ); // slow(1) result returned from cache
+console.log("Again: " + slow(1, 2, 10)); // slow(1) result returned from cache
 console.timeEnd('slow with caching')
 
 
@@ -490,13 +489,13 @@ newUser.name = name1;
 console.log(newUser.name);
 
 newUser.name = name2;
-console.log(newUser.name); 
+console.log(newUser.name);
 
-newUser.age = age1; 
-console.log(newUser.age); 
+newUser.age = age1;
+console.log(newUser.age);
 
-newUser.age = age2; 
-console.log(newUser.age); 
+newUser.age = age2;
+console.log(newUser.age);
 /* newUser.name = "Marco";
 console.log(newUser.name);
 
@@ -509,3 +508,170 @@ console.log(newUser.age); // output: 30
 newUser.age = 121; // this should not work
 console.log(newUser.age); // output: 30 (the value did not change) */
 
+//object.create
+//cat.prototype
+
+// create a new animal using Object.create
+
+/* let animal = {
+  eats: true,
+  sleeps: true,
+  legs: 4,
+  mammal: true,
+  hat: "Crown"
+}; */
+//create 2 new types of animal based on the animal prototype - one using Object.create (like rabbit), and one using an F.prototype (like cat)
+// create a new animal using Object.create
+
+/* const rabbit = Object.create(animal);
+rabbit.name = "Bugs Bunny";
+rabbit.legs = 200; // override the legs property
+rabbit.hat = 'Crown';//ads custom property */
+//new way of doing this
+
+/* let rabbit = Object.create(animal, {
+  jumps: { 
+    value:true,
+    enumerable: true
+  }
+}); */
+/* for (let prop in animal) console.log(`${prop} is ${prop[prop]}` ) */
+/* console.log(rabbit.eats);
+console.log(rabbit.sleeps);
+console.log(rabbit.legs); 
+console.log(rabbit.mammal); 
+console.log(rabbit.name); 
+console.log(rabbit.hat);  */
+// create a new animal using a constructor function and prototype
+/* function Animal(name, eats, sleeps, legs) {
+  this.name = name;
+  this.eats = eats;
+  this.sleeps = sleeps;
+  this.legs = legs;
+  //this.mammal = mammal;
+}
+Animal.prototype.mammal = true;
+Animal.prototype.favoriteToy = "scratching poll";
+ */
+/* const cat = new Animal("Pringles", true, true, 4);
+cat.favoriteToy = "Toy Mice";  // overrides scratching poll
+console.log(cat.eats); 
+console.log(cat.sleeps); 
+console.log(cat.legs); 
+console.log(cat.mammal); 
+console.log(cat.name); 
+console.log(cat.favoriteToy); */
+
+/* for (let prop in Animal) console.log(`${prop} is ${Animal[prop]}` ) */
+/* console.log(Object.keys(Animal)); */
+
+//give them some custom properties
+//override one of the prototype properties
+
+// OBJECT PROTOTYPES
+
+let animal1 = {
+  eats: true,
+  sleeps: true,
+  legs: 4,
+  mammal: true
+};
+
+// Using Object.create
+const moose = Object.create(animal1, {
+  headWear: {
+    value: true,
+    enumerable: true
+  },
+  big: {
+    value: true,
+    enumerable: true
+  }
+})
+
+console.log(moose.eats)
+
+// Using function then applying prototype
+function Cat(name) {
+  this.name = name
+}
+
+Cat.prototype = animal1  // inherit properties
+
+const pringles = new Cat('BIGCATPACK')
+
+console.log(pringles.legs)
+
+// Override prototype
+const lizard = Object.create(animal1, {
+  reptile: {
+    value: true,
+    enumerable: false
+  },
+
+  mammal: {
+    value: false,
+    enumerable: true
+  }
+})
+
+for (let [key, value] of Object.entries(lizard)) console.log(key + value)
+
+
+class AnimalClass {
+
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
+    this.type = 'animal'
+  }
+
+  run(speed) {
+    this.speed = speed;
+    console.log(`${this.name} runs with speed ${this.speed}.`);
+  }
+
+  stop() {
+    this.speed = 0;
+    console.log(`${this.name} stands still.`);
+  }
+
+}
+
+class DogClass extends AnimalClass {
+  constructor(name, breed) {
+    super(name);
+    this.breed = breed;
+    this.type = 'dog';
+  }
+
+  bark() {
+    console.log(`${this.name} barks.`);
+  }
+
+  sit() {
+    console.log(`${this.name} is sitting.`);
+  }
+
+  run(speed) {
+    super.run(speed);
+    console.log(`${this.name} is running at ${this.speed} km per hour.`);
+  }
+
+  fetch(object) {
+    console.log(`${this.name} fetches the ${object}.`);
+  }
+
+}
+
+const myDoggo = new DogClass('BIG DOGGO', 'K9');
+
+myDoggo.run(10);
+
+myDoggo.stop();
+
+myDoggo.bark();
+
+myDoggo.sit();
+
+myDoggo.fetch("ball")
