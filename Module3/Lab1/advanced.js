@@ -278,7 +278,7 @@ function Person(name, age, gender) {
     this.age = age;
     this.gender = gender;
 
-    this.toString = function() {
+    this.toString = function () {
         return `${this.name}, ${this.age}, ${this.gender}`;
     }
 }
@@ -289,7 +289,7 @@ console.log('person1: ' + person1); //prints person1: [object Object]
 //and printing them
 
 const person2 = new Person('Marco Wells', 24, 'male');
-console.log('person2: ' + person2); 
+console.log('person2: ' + person2);
 
 //c) Create a new constructor function Student that uses call to inherit from Person and
 //add an extra property cohort
@@ -298,16 +298,67 @@ function Student(name, age, gender, cohort) {
     Person.call(this, name, age, gender);
     this.cohort = cohort;
 
-    this.toString = function() {
+    this.toString = function () {
         return `${this.name}, ${this.age}, ${this.gender}, ${this.cohort}`;
-      }
+    }
 }
 
 //d) Add a custom toString for Student objects that formats and prints their details. Test
 //with 2 students.
 
 const student1 = new Student('Luke Barker', 24, 'male', '2023');
-console.log('student1: ' + student1.toString()); 
+console.log('student1: ' + student1.toString());
 
 const student2 = new Student('Jo', 40, 'female', '2023');
-console.log('student2: ' + student2.toString()); 
+console.log('student2: ' + student2.toString());
+
+//8
+class DigitalClock {
+    constructor(prefix) {
+        this.prefix = prefix;
+    }
+    display() {
+        let date = new Date();
+        //create 3 variables in one go using array destructuring
+        let [hours, mins, secs] = [date.getHours(), date.getMinutes(),
+        date.getSeconds()];
+        if (hours < 10) hours = '0' + hours;
+        if (mins < 10) mins = '0' + mins;
+        if (secs < 10) secs = '0' + secs;
+        console.log(`${this.prefix} ${hours}:${mins}:${secs}`);
+    }
+    stop() {
+        clearInterval(this.timer);
+    }
+    start() {
+        this.display();
+        this.timer = setInterval(() => this.display(), 1000);
+    }
+}
+const myClock = new DigitalClock('my clock:')
+myClock.start()
+
+// a) Create a new class PrecisionClock that inherits from DigitalClock and adds the
+//parameter precision – the number of ms between 'ticks'. This precision parameter
+//should default to 1 second if not supplied.
+
+class PrecisionClock extends DigitalClock {
+    constructor(prefix, precision = 1000){
+        super(prefix);
+        this.precision = precision;
+    }
+
+    start() {
+        super.display();
+        this.timer = setInterval(() => this.display(), this.precision);
+      }
+}
+
+const myPrecisionClock = new PrecisionClock('my precision clock:', 500);
+myPrecisionClock.start();
+
+
+//b) Create a new class AlarmClock that inherits from DigitalClock and adds the
+//parameter wakeupTime in the format hh:mm. When the clock reaches this time, it
+//should print a 'Wake Up' message and stop ticking. This wakeupTime parameter should
+//default to 07:00 if not supplied.
