@@ -199,4 +199,101 @@ preparePizza3(() => {
     });
 });
 
+function start() {
+    console.log('Started preparing Pizza'); 
+    setTimeout(makeBasee, 100, addCheesee, addToppingss, cookk, finishh);
+}
+
+const makeBasee = function(...actions) {
+    console.log('Pizza Base is prepared');
+    setTimeout(actions.shift(), 500, ...actions)
+}
+
+const addCheesee = (...actions) => {
+    console.log('Cheese is added on Pizza');
+    setTimeout(actions.shift(), 200, ...actions)
+}
+
+function addToppingss(...actions) {
+    console.log('Toppings are added on Pizza')
+    setTimeout(actions.shift(), 300, ...actions)
+}
+
+const cookk = function(...actions) {
+    console.log('Pizza is cooked')
+    setTimeout(actions.shift(), 800, ...actions)
+}
+
+const finishh = (...actions) => {
+    console.log('Pizza is ready')
+}
+
+/* start();
+
 //Program 5 : Modify the program 4 to use Promises concept and achieve the required result
+function start() {
+    return new Promise((resolve) => {
+        setTimeout(() => {console.log("Started preparing Pizza"); resolve(makeBase4);}, 1000);
+    });
+}
+
+// Function to prepare the pizza base
+function makeBase4() {
+    return new Promise((resolve) => {
+        setTimeout(() => {console.log("Started preparing Pizza"); resolve(addCheese4);}, 1000);
+    });
+}
+
+
+// Function to add cheese on the pizza
+function addCheese4() {
+    return new Promise((resolve) => {
+        setTimeout(() => {console.log("Started preparing Pizza"); resolve(addVeggies4);}, 1000);
+    });
+}
+
+// Function to add veggies on the pizza
+function addVeggies4() {
+    return new Promise((resolve) => {
+        setTimeout(() => {console.log("Started preparing Pizza"); resolve(heatPizza4);}, 1000);
+    });
+}
+
+// Function to heat the pizza
+function heatPizza4() {
+    return new Promise((resolve) => {
+        setTimeout(() => {console.log("Started preparing Pizza"); resolve(pizzaReady4);}, 1000);
+    });
+}
+
+// Function to indicate that the pizza is ready
+function pizzaReady4() {
+    console.log("Pizza is ready");
+}
+
+// Call the functions in sequence using Promises to simulate the pizza making process
+preparePizza4()
+    .then(() => {
+        return preparePizzaBase4();
+    })
+    .then(() => {
+        return addCheese4();
+    })
+    .then(() => {
+        return addVeggies4();
+    })
+    .then(() => {
+        return heatPizza4();
+    })
+    .then(() => {
+        pizzaReady4();
+    })
+    .catch((error) => {
+        console.error(`${ error }`);
+    })
+    .finally(() => {
+        console.log("done making pizza");
+    });
+ */
+
+

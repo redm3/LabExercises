@@ -772,4 +772,68 @@ songPromise
 let songResult = await waitForSong()
 console.log(songResult) */
 
+//first run these commands :
+// 1. npm init (to initialise this script with the npm)
+// 2. npm install node-fetch (to install the browser function 'fetch' for node.js)
+// 3. add "type": "module", to package.json
+
+import fetch from 'node-fetch'
+
+/* fetch('https://jsonplaceholder.typicode.com/posts/${postId}') //sample public JSON API for use in testing
+  .then(response => response.json()) //this gets the entire HTTP response, so we use the .json() function which also returns a promise
+  .then(json => console.log(`Post #10: ${json.title}`)) //this promise includes the json returned from the fetched URL if successful
+  .catch(error => console.error(`Caught error: ${error}`)) //can optionally include this to show any errors
+  .finally(() => console.log('done fetching')) //can optionally include this after all fetching done */
+
+//try and get both fetch.then and await fetch type syntaxes working
+/* async function fetchPost() {
+  try {
+
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+    const json = await response.json();
+    console.log(`Post ${postId}: ${json.title}`);
+
+  } catch (error) {
+    console.error(`Caught error: ${error}`);
+
+  } finally {
+    console.log('done fetching');
+
+  }
+
+  return false;
+}
+
+fetchPost(10); */
+
+//create a function similar to fetchPostTitle that grabs the body of a particular post
+
+/* fetch('https://jsonplaceholder.typicode.com/posts/10') //sample public JSON API for use in testing
+  .then(response => response.json()) //this gets the entire HTTP response, so we use the .json() function which also returns a promise
+  .then(json => console.log(`Post #10: ${json.body}`)) //this promise includes the json returned from the fetched URL if successful
+  .catch(error => console.error(`Caught error: ${error}`)) //can optionally include this to show any errors
+  .finally(() => console.log('done fetching')) //can optionally include this after all fetching done
+ */
+async function fetchPostBody(postId) {
+  try {
+
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+    const json = await response.json();
+    console.log(`Post #${postId} body: ${json.body}`);
+
+  } catch (error) {
+    console.error(`Caught error: ${error}`);
+
+  } finally {
+    console.log('done fetching');
+
+  }
+
+  return false;
+}
+
+fetchPostBody(20); // Call the function to fetch the body of post with ID 10
+
+
+
 
