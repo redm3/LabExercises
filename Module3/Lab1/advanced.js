@@ -343,7 +343,7 @@ myClock.start()
 //should default to 1 second if not supplied.
 
 class PrecisionClock extends DigitalClock {
-    constructor(prefix, precision = 1000){
+    constructor(prefix, precision = 1000) {
         super(prefix);
         this.precision = precision;
     }
@@ -351,7 +351,7 @@ class PrecisionClock extends DigitalClock {
     start() {
         super.display();
         this.timer = setInterval(() => this.display(), this.precision);
-      }
+    }
 }
 
 const myPrecisionClock = new PrecisionClock('my precision clock:', 500);
@@ -362,3 +362,185 @@ myPrecisionClock.start();
 //parameter wakeupTime in the format hh:mm. When the clock reaches this time, it
 //should print a 'Wake Up' message and stop ticking. This wakeupTime parameter should
 //default to 07:00 if not supplied.
+
+class AlarmClock extends DigitalClock {
+    constructor(prefix, wakeupTime = '16:28') {
+        super(prefix);
+        this.wakeupTime = wakeupTime;
+    }
+
+    display() {
+        super.display();
+        if (this.getTime() === this.wakeupTime) {
+            console.log('Wake Up!');
+            this.stop();
+        }
+    }
+
+    getTime() {
+        let date = new Date();
+        let [hours, mins] = [date.getHours(), date.getMinutes()];
+        if (hours < 10) hours = '0' + hours;
+        if (mins < 10) mins = '0' + mins;
+        //if (secs < 10) secs = '0' + secs;
+        return `${hours}:${mins}`;
+    }
+}
+
+const myAlarmClock = new AlarmClock('my alarm clock:', '16:28');
+myAlarmClock.start();
+
+//9. We can delay execution of a function using setTimeout, where we need to provide both
+//the callback function and the delay after which it should execute.
+
+//a) Create a promise-based alternative randomDelay() that delays execution for a
+//random amount of time (between 1 and 20 seconds) and returns a promise we can use
+//via .then(), as in the starter code below
+
+function randomDelay() {
+    const delay = Math.floor(Math.random() * 2000) + 1000; // random delay between 1 and 2 seconds
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("If has been completed then resolve to then");
+        }, delay);
+    });
+}
+
+randomDelay().then(() => console.log('There appears to have been a delay.'));
+
+//b) If the random delay is even, consider this a successful delay and resolve the promise,
+//and if the random number is odd, consider this a failure and reject it
+
+function randomDelay1() {
+    const delay = Math.floor(Math.random() * 2000) + 1000; // random delay between 1 and 2 seconds
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (delay % 2 === 0) {
+                resolve("Success!");
+            } else {
+                reject("Failure!");
+            }
+        }, delay);
+    });
+}
+
+randomDelay1().then((result) => { console.log(`Promise resolved with result: ${result}`); })
+    .catch((error) => { console.log(`Promise rejected with error: ${error}`); });
+
+//c) Update the testing code to catch rejected promises and print a different message
+
+randomDelay1()
+    .then(() => console.log('There appears to have been a delay.'))
+    .catch(() => console.log('There was an error with the delay.'));
+
+//d) Try to update the then and catch messages to include the random delay value
+
+function randomDelay2() {
+    const delay = Math.floor(Math.random() * 2000) + 1000; // random delay between 1 and 2 seconds
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (delay % 2 === 0) {
+                resolve(delay);
+            } else {
+                reject(delay);
+            }
+        }, delay);
+    });
+}
+
+randomDelay2()
+    .then((delay) => console.log(`Success: Delay of ${delay} ms.`))
+    .catch((delay) => console.log(`Error: Delay of ${delay} ms.`));
+
+/*   10.Fetch is a browser-based function to send a request and receive a response from a server,
+which uses promises to handle the asynchronous response.
+The below fetchURLData uses fetch to check the response for a successful status
+code, and returns a promise containing the JSON sent by the remote server if successful
+or an error if it failed. (To run this code in a node.js environment, follow the instructions in
+the comments before the function.) */
+
+//run 'npm init' and accept all the defaults
+//run 'npm install node-fetch'
+//add this line to package.json after line 5: "type": "module",
+
+import fetch from 'node-fetch'
+globalThis.fetch = fetch
+
+function fetchURLData(url) {
+    let fetchPromise = fetch(url).then(response => {
+        if (response.status === 200) {
+            return response.json();
+        } else {
+            throw new Error(`Request failed with status ${response.status}`);
+        }
+
+    });
+    return fetchPromise;
+}
+
+
+//a) Write a new version of this function using async/await
+
+
+async function fetchURLData1(url) {
+    try {
+        const response = await fetch(url);
+        if (response.status === 200) {
+            const data = await response.json();
+            return data;
+
+        } else {
+
+            throw new Error(`Request failed with status ${response.status}`);
+        }
+
+    } catch (error) {
+
+        console.log(`Error: ${error.message}`);
+
+    }
+
+}
+
+//b) Test both functions with valid and invalid URLs
+
+fetchURLData('https://jsonplaceholder.typicode.com/wrongvalue/1')
+    .then(data => console.log(data))
+    .catch(error => console.error(error.message));
+//request status failed with status 404
+
+
+fetchURLData1('https://jsonplaceholder.typicode.com/todos/1')
+    .then(data => console.log(data))
+    .catch(error => console.error(error.message));
+//{ userId: 1, id: 1, title: 'delectus aut autem', completed: false }
+
+//c) (Extension) Extend your new function to accept an array of URLs and fetch all of them,
+//using Promise.all to combine the results.
+
+async function fetchAllURLData(urls) {
+    const results = [];
+    
+    for (let i = 0; i < urls.length; i++) {
+        try {
+            const response = await fetch(urls[i]);
+            if (response.status === 200) {
+                const data = await response.json();
+                results.push(data);
+            } else {
+                throw new Error(`Request failed with status ${response.status}`);
+            }
+        } catch (error) {
+            console.error(`Error fetching ${urls[i]}: ${error.message}`);
+        }
+    }
+    return results;
+}
+
+fetchAllURLData([
+    'https://jsonplaceholder.typicode.com/todos/1',
+    'https://jsonplaceholder.typicode.com/todos/2',
+    'https://jsonplaceholder.typicode.com/todos/3'
+])
+    .then(data => console.log(data))
+    .catch(error => console.error(error.message));
