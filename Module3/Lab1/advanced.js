@@ -536,7 +536,7 @@ async function fetchAllURLData(urls) {
     }
     return results;
 }
-
+//promis.all
 fetchAllURLData([
     'https://jsonplaceholder.typicode.com/todos/1',
     'https://jsonplaceholder.typicode.com/todos/2',
