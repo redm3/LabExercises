@@ -675,3 +675,101 @@ myDoggo.bark();
 myDoggo.sit();
 
 myDoggo.fetch("ball")
+
+//write a function checkDate, similar to above, that throws an error if the date is parsed as invalid and implements catch/finally
+const testDate = new Date('this is not a date')
+console.log(testDate) //Invalid Date
+console.log(testDate == 'Invalid Date')
+
+function checkDate(dateString) {
+  try {
+    const date = new Date(dateString)
+    //only errors thrown in the try statement are caught
+    if (date == 'Invalid Date') {
+      throw new SyntaxError('Invalid date');
+    }
+
+    return true;
+
+  } catch (err) {
+    if (err instanceof SyntaxError) {
+      console.log('Syntax error occurred: ' + err.message);
+    } else {
+      throw err;
+    }
+  }
+
+  finally {
+    console.log('at the end')
+    //used to tie off loose ends regardless if we hit errors or not,
+    //e.g. closing db connections,removing interval timers,etc.
+  }
+
+  return false;
+}
+/* 
+const testDate1 = new Date('this is not a date');
+const today = new Date(); */
+
+console.log(checkDate("This is not a date"))
+/* console.log(checkDate(today)) */
+console.log(checkDate("2023-03-03"))
+
+//promises
+
+function produceSong(resolve, reject) {
+  const artists = ['Taylor Swift', 'Beyonce', 'Drake', 'Ed Sheeran', 'Rihanna', 'The Weeknd', 'Harry Styles']
+  const randomArtist = Math.floor(Math.random() * artists.length) //random number corresponding to one of the above artists
+
+  const songs = ['Unstoppable', 'Numb Little Bug', 'About Damn Time', 'Music For a Sushi Restaurant', 'Anti-Hero', 'Glimpse of Us']
+  const randomSong = Math.floor(Math.random() * songs.length) //random number corresponding to one of the above songs
+
+  const randomOutcome = Math.round(Math.random()) //returns either 0 or 1 randomly for failure (0) or success (1)
+
+  let successResult = artists[randomArtist] + ' has just released their newest song called ' + songs[randomSong]
+  let failResult = artists[randomArtist] + ' has no new songs'
+
+  setTimeout(() => randomOutcome ? resolve(successResult) : reject(failResult), 1000)
+
+  //a longhand version of the above setTimeout, without arrow functions or conditional statements:
+  //setTimeout(function() {
+  //    if (randomOutcome == 1) resolve(successResult) //calls the resolve callback to indicate successful promise resolution, native to promise producer functions
+  //    else reject(failResult) //calls the reject callback to indicate failed promise resolution, native to promise producer functions
+  //}, 1000)
+}
+
+let songPromise = new Promise(produceSong)
+
+songPromise.then(
+  null,
+  failMsg => console.error(`Failure #2 sorry fans: ${failMsg}`)
+)
+
+songPromise
+  .then((successMsg) => { console.log(`success #3: ${successMsg}`) })
+  .catch((failMsg) => { console.error(`failure #3: ${failMsg}`) })
+
+songPromise
+  .then((successMsg) => { console.log(`success #4: ${successMsg}`) })
+  .catch((failMsg) => { console.error(`success #4: ${failMsg}`) })
+  .finally(() => { console.log('Song production now finalised.'); });
+
+//async & await
+/* async function waitForSong() {
+  try {
+    let latestSong = await songPromise;
+    console.log(`success #5.${latestSong}`);
+  } catch (error) {
+    console.error(`Faiure #5: sorry fans, ' ${error}`);
+  }
+  finally {
+    console.log('song production now finalised')
+  }
+
+  return false;
+}
+
+let songResult = await waitForSong()
+console.log(songResult) */
+
+
