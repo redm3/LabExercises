@@ -534,9 +534,11 @@ async function fetchAllURLData(urls) {
             console.error(`Error fetching ${urls[i]}: ${error.message}`);
         }
     }
-    return results;
+   //Promise.all return results;
 }
-//promis.all
+
+
+//you pass an array to promise.all 
 fetchAllURLData([
     'https://jsonplaceholder.typicode.com/todos/1',
     'https://jsonplaceholder.typicode.com/todos/2',
@@ -544,3 +546,31 @@ fetchAllURLData([
 ])
     .then(data => console.log(data))
     .catch(error => console.error(error.message));
+
+    /* Promise.all([promise1, promise2, promise3]).then((values) => {
+    console.log(values);
+  }); */
+
+  let urls = [
+    'https://jsonplaceholder.typicode.com/todos/1',
+    'https://jsonplaceholder.typicode.com/todos/2',
+    'https://jsonplaceholder.typicode.com/todos/3']
+
+
+Promise.all(urls.map(url => fetch(url).then(response => response.json())))
+.then(responseArray => console.log(responseArray))
+.catch(error => console.log(error))
+
+//ad aditional error handling 
+
+Promise.all(urls.map(url =>
+    fetch(url).then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error(`Request failed with status ${response.status}`);
+        }
+    })
+))
+.then(responseArray => console.log(responseArray))
+.catch(error => console.error(error.message));
