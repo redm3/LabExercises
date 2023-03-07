@@ -1,0 +1,130 @@
+<!-- //Below is a template for a card with the CSS written alongside. -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e3f2fd;
+        }
+
+        .card {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-right: 20px;
+            flex-basis: calc(33.33% - 20px);
+            /* width of each card */
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 3em;
+            padding: 0 0 10px 0;
+        }
+
+        .card-description {
+            font-weight: 400;
+            font-size: 2em;
+        }
+
+        #profile-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 5px solid black;
+            flex-basis: fit-content;
+            /* thick black border */
+            padding: 10px;
+            /* add some padding to separate the border from the image and text */
+        }
+
+
+        #profile-card img {
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        #profile-card h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        #card-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="profile-card">
+        <img
+            src="https://i.pinimg.com/236x/8f/50/4d/8f504d4c6b1c6f1e9b9eb2ba158aa6f8--van-gogh-museum-vincent-van-gogh.jpg">
+        <h1>Van Gogh</h1>
+    </div>
+<!--     <div id="profile-card">
+        <img
+            src="https://i.pinimg.com/236x/8f/50/4d/8f504d4c6b1c6f1e9b9eb2ba158aa6f8--van-gogh-museum-vincent-van-gogh.jpg">
+        <h1>Fridaa Khalo</h1>
+    </div> -->
+    <template id="card-template">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title"></div>
+                <div class="card-image"></div>
+
+            </div>
+        </div>
+    </template>
+    <div id="card-list"></div>
+</body>
+<script>
+    const artist = {
+        name: "Van Gogh",
+        portfolio: [
+            {
+                title: "portrait",
+                url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image"
+            },
+            {
+                title: "sky",
+                url: "https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg"
+            },
+        ]
+    };
+
+    function addCard(title, imageUrl) {
+        const template = document.getElementById("card-template").content.cloneNode(true);
+
+        template.querySelector('.card-title').innerText = title;
+
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.alt = title;
+        template.querySelector('.card-image').appendChild(img);
+
+        document.querySelector('#card-list').appendChild(template);
+    }
+
+
+    function addProfileCard(name, imageUrl) {
+        const profileCard = document.getElementById("profile-card");
+        profileCard.querySelector('h1').innerText = name;
+        profileCard.querySelector('img').src = imageUrl;
+    }
+
+    if ('content' in document.createElement('template')) {
+    addProfileCard(artist.name, artist.portfolio[0].url);
+
+    for (let i = 0; i < artist.portfolio.length; i++) {
+        const artwork = artist.portfolio[i];
+        addCard(artwork.title, artwork.url);
+    }
+
+    addCard("Starry Night", "https://www.vincentvangogh.org/images/paintings/the-starry-night.jpg");
+    addCard("Sunflowers", "https://www.vincentvangogh.org/images/paintings/sunflowers.jpg");
+}
+</script>
+
+</html>
