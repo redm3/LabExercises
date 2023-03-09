@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Latest News</h1>
+
+        <div class="row" id="news-container"></div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Add News</h2>
+                <div class="form-group">
+                    <label for="title-input">Title:</label>
+                    <input type="text" class="form-control" id="title-input">
+                </div>
+                <div class="form-group">
+                    <label for="content-input">Content:</label>
+                    <textarea class="form-control" id="content-input"></textarea>
+                </div>
+                <button class="btn btn-primary" id="add-news-button">Add News</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let news = [
+            { id: 1, title: 'News1', content: 'bla' },
+            { id: 2, title: 'News2', content: 'ble' },
+            { id: 3, title: 'News3', content: 'blu' }
+        ];
+
+        // Get the news container element
+        const newsContainer = document.getElementById('news-container');
+
+        // Function to create and append a news item element
+        function addNewsItem(newsItem) {
+            const newsItemElement = document.createElement('div');
+            newsItemElement.className = 'col-md-4 mb-4';
+            newsItemElement.innerHTML = `
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">${newsItem.title}</h5>
+              <p class="card-text">${newsItem.content}</p>
+            </div>
+          </div>
+        `;
+            newsContainer.appendChild(newsItemElement);
+        }
+
+        // Function to update the news
+        function updateNews() {
+            // Remove all news items from the container
+            while (newsContainer.firstChild) {
+                newsContainer.removeChild(newsContainer.firstChild);
+            }
+
+            // Loop through the news array and add each news item to the container
+            news.forEach(addNewsItem);
+        }
+
+        // Function to handle adding news
+        function addNews() {
+            // Get the input values
+            const title = document.getElementById('title-input').value;
+            const content = document.getElementById('content-input').value;
+
+            // Add the new news item to the array
+            const newNewsItem = {
+                id: news.length + 1,
+                title: title,
+                content: content
+            };
+            news.push(newNewsItem);
+
+            // Update the news on the page
+            updateNews();
+
+            // Clear the input values
+            document.getElementById('title-input').value = '';
+            document.getElementById('content-input').value = '';
+        }
+
+        // Update the news on page load
+        //updateNews();
+
+        // Update the news every 5 seconds
+        setInterval(updateNews, 5000);
+
+
+
+        // Add event listener to the add news button
+        document.getElementById('add-news-button').addEventListener('click', addNews);
+    </script>
+</body>
+
+</html>
