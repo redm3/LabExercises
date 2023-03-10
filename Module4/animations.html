@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .slider-container {
+        height: 200px;
+        position: relative;
+    }
+
+    .slider {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 0;
+        background-color: red;
+        animation: slide 2s ease-in-out infinite;
+    }
+
+    @keyframes slide {
+        0% {
+            top: 0;
+            background-color: red;
+        }
+
+        50% {
+            top: calc(100% - 100px);
+            background-color: blue;
+        }
+
+        100% {
+            top: 0;
+            background-color: red;
+        }
+    }
+
+    .mario-container {
+        position: relative;
+        height: 1000px;
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .mario {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1000px;
+        height: 1000px;
+        background: url('https://www.pngfind.com/pngs/m/676-6764940_super-mario-png-super-mario-bros-jpg-transparent.png') 0 0 no-repeat;
+        animation: jump 0.5s infinite, move 10s linear infinite;
+    }
+
+    @keyframes move {
+        0% {
+            left: -100px;
+            /* Start Mario offscreen to the left */
+        }
+
+        100% {
+            left: calc(100% + 800px);
+            /* Move Mario offscreen to the right */
+        }
+    }
+
+    @keyframes jump {
+
+        0%,
+        100% {
+            transform: translateX(0) translateY(0);
+        }
+
+        50% {
+            transform: translateX(0) translateY(-70px);
+        }
+    }
+
+
+    .mario:hover {
+        animation: jump 0.5s ease-in-out infinite;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="slider-container">
+        <div class="slider"></div>
+    </div>
+
+    <div class="mario-container">
+        <div class="mario"></div>
+    </div>
+
+</body>
+
+</html>
