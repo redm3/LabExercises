@@ -1,0 +1,113 @@
+<html>
+
+<head>
+    <title>Moment DateTime Format</title>
+    <!-- reference Moment.js library -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+    <!-- reference Moment Timezone library -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.32/moment-timezone.min.js"></script>
+</head>
+
+<body>
+    <h2>Number of Days Between Birthdate and Today</h2>
+    <!-- container for Moment.js output -->
+    <div id="displayDays"></div>
+
+    <h2>Age Calculator</h2>
+    <!-- container for Moment.js output -->
+    <div id="displayAge"></div>
+
+    <h2>Date Comparison</h2>
+    <!-- container for Moment.js output -->
+    <div id="displayClosestDate"></div>
+
+    <h2>Date Comparison</h2>
+    <!-- container for Moment.js output -->
+    <div id="displayComparison"></div>
+
+    <h2>Current Time in London</h2>
+    <!-- container for Moment.js output -->
+    <div id="displayLondonTime"></div>
+
+
+    <h2>Moment Date</h2>
+    <!-- container for Moment.js output -->
+    <div id="displayMoment"></div>
+    <h2>JavaScript Date</h2>
+    <!-- container for JavaScript Date output -->
+    <div id="displayJsDate"></div>
+    <script type="text/javascript">
+        (function () {
+            //1. Calculate the number of days betweenyour birthdate and the current date
+            // Calculate the number of days between your birthdate and the current date
+            var birthdate = moment("1997-06-17");
+            var today = moment();
+            var diffInDays = today.diff(birthdate, 'days');
+
+            // display the number of days in the #displayDays div
+            var eDisplayDays = document.getElementById('displayDays');
+            eDisplayDays.innerHTML = "The number of days between your birthdate and today is: " + diffInDays + " days.";
+
+            //2. Display the number of years, months,and days between your birthdate and current date
+            // Calculate the number of years, months, and days between your birthdate and the current date
+            var birthdate = moment("1997-06-17");
+            var today = moment();
+            var years = today.diff(birthdate, 'years');
+            birthdate.add(years, 'years');
+            var months = today.diff(birthdate, 'months');
+            birthdate.add(months, 'months');
+            var days = today.diff(birthdate, 'days');
+
+            // display the age in the #displayAge div
+            var eDisplayAge = document.getElementById('displayAge');
+            eDisplayAge.innerHTML = "Your age is: " + years + " years, " + months + " months, and " + days + " days.";
+
+            //1. Given two dates, display the date closest to the current date
+            // Given two dates, display the date closest to the current date
+            var date1 = moment('2022-06-17');
+            var date2 = moment('2022-06-19');
+            var closestDate = moment.min(date1, date2);
+
+            // display the closest date in the #displayClosestDate div
+            var eDisplayClosestDate = document.getElementById('displayClosestDate');
+            eDisplayClosestDate.innerHTML = "The closest date to the current date is: " + closestDate.format("MMMM DD, YYYY");
+
+            //2. Given two dates, display whether the first date is before or after the second date
+
+            if (date1.isBefore(date2)) {
+                var comparison = "The first date is before the second date";
+            } else if (date1.isAfter(date2)) {
+                var comparison = "The first date is after the second date";
+            } else {
+                var comparison = "The two dates are the same";
+            }
+
+            // display the comparison in the #displayComparison div
+            var eDisplayComparison = document.getElementById('displayComparison');
+            eDisplayComparison.innerHTML = comparison;
+
+            //3. Display the current time in London
+            // Display the current time in London
+            var londonTime = moment().tz("Europe/London").format("h:mm:ss a");
+
+            // display the London time in the #displayLondonTime div
+            var eDisplayLondonTime = document.getElementById('displayLondonTime');
+            eDisplayLondonTime.innerHTML = "The current time in London is " + londonTime;
+
+
+
+            // instantiate a moment object
+            var NowMoment = moment();
+            // instantiate a JavaScript Date object
+            var NowDate = new Date();
+            // display value of moment object in #displayMoment div
+            var eDisplayMoment = document.getElementById('displayMoment');
+            eDisplayMoment.innerHTML = NowMoment;
+            // display value of Date object in #displayJsDate div
+            var eDisplayDate = document.getElementById('displayJsDate');
+            eDisplayDate.innerHTML = NowDate;
+        })();
+    </script>
+</body>
+
+</html>
