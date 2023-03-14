@@ -1,8 +1,13 @@
 const express = require('express');
+const testRoutes = require('./routes/myTestRoute');
+
 const app1 = express();
 const app2 = express();
 
-app1.get('/', (req, res) => {
+app1.use('/', express.static('Public'));
+app1.use('/mytest', testRoutes);
+
+app1.get('/hello', (req, res) => {
   res.send('Hello from App 1!');
 });
 
