@@ -1,0 +1,179 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "My Calculator Example",
+        "description": "Module 5 Example Express Backend",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Calculator",
+            "description": "API for Calculus in the system"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/calculator/add": {
+            "get": {
+                "tags": [
+                    "Calculator"
+                ],
+                "summary": "Add two numbers",
+                "parameters": [
+                    {
+                        "name": "num1",
+                        "in": "query",
+                        "description": "the First Number",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "num2",
+                        "in": "query",
+                        "description": "the Second number",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the sum of the two numbers",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/calculator/subtract": {
+            "get": {
+                "tags": [
+                    "Calculator"
+                ],
+                "summary": "Subtract two numbers",
+                "parameters": [
+                    {
+                        "name": "num1",
+                        "in": "query",
+                        "description": "the First Number",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "num2",
+                        "in": "query",
+                        "description": "the Second number",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the difference between the two numbers",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/calculator/multiply": {
+            "get": {
+                "tags": [
+                    "Calculator"
+                ],
+                "summary": "Multiply two numbers",
+                "parameters": [
+                    {
+                        "name": "num1",
+                        "in": "query",
+                        "description": "the First Number",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "num2",
+                        "in": "query",
+                        "description": "the Second number",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the product of the two numbers",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/calculator/divide": {
+            "get": {
+                "tags": [
+                    "Calculator"
+                ],
+                "summary": "Divide two numbers",
+                "parameters": [
+                    {
+                        "name": "num1",
+                        "in": "query",
+                        "description": "the First Number",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "num2",
+                        "in": "query",
+                        "description": "the Second number",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the product of the two numbers",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

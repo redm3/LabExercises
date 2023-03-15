@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <template id="friend-template">
+        <div class="friend">
+            <h3>#<span class="friend-id"></span>: <span class="friend-name"></span></h3>
+        </div>
+    </template>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Hello Friends!</h1>
+    <div id="friendList"></div>
+    <div id="randomFriend">My best friend is undecided</div>
+
+    <button onclick="listFriends()">List All Friends</button>
+
+    <button onclick="getRandomFriend()">Choose Random Friend</button>
+
+    <hr>
+
+    <form onsubmit="addNewFriend(event)" method="POST">
+        <!-- update the extra fields -->
+        <label for="newFriendId">New Friend ID:</label><input name="id" id="newFriendId"/>
+
+        <label for="newFriendName">New Friend Name:</label><input name="name" id="newFriendName"/>
+
+        <button>Add New Friend</button>
+        <div class="resultMsg"></div>
+    </form>
+
+    <script>
+        function listFriends() {
+            document.getElementById('friendList').innerText = '';
+
+            fetch('/friends/all').then(resp => resp.json())
+            .then(friends => {
+                friends.forEach(friend => {
+                    const template = document.getElementById("friend-template").content.cloneNode(true); //1. clone
+                    template.querySelector('.friend-id').innerText = friend.id
+                    template.querySelector('.friend-name').innerText = friend.name
+                    document.getElementById('friendList').appendChild(template)
+                });
+            })
+        }
+
+        function getRandomFriend() {
+            /* updated the friends to retrieve how many randomid's there are  */
+            let randomId = Math.ceil(Math.random() * 3);
+            fetch('/friends/'+randomId).then(resp => resp.json())
+            .then(friend => {
+                    document.getElementById('randomFriend').innerText = 'My best friend is '+friend.name
+            })            
+        }
+
+        function addNewFriend(event) {
+            event.preventDefault();
+
+            //Get the entire form
+            let form = event.currentTarget;
+            //combine all the fields
+            let formFields = new FormData(form);
+
+            postFormFieldsAsJson('/friends/new', formFields)
+                .then(result => document.querySelector('.resultMsg').innerText = JSON.stringify(result))       
+        }
+
+        async function postFormFieldsAsJson(url, formData) {
+            //Create an object from the form data entries
+            let formDataObject = Object.fromEntries(formData.entries());
+            // Format the plain form data as JSON
+            let formDataJsonString = JSON.stringify(formDataObject);
+
+            //Set the fetch options (headers, body)
+            let fetchOptions = {
+                //HTTP method set to POST.
+                method: "POST",
+                //Set the headers that specify you're sending a JSON body request and accepting JSON response
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                // POST request body as JSON string.
+                body: formDataJsonString,
+            };
+
+            //Get the response body as JSON.
+            let res = await fetch(url, fetchOptions);
+            let json = await res.json();
+
+            return json;
+        }        
+    </script>
+</body>
+</html>
