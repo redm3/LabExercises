@@ -24,7 +24,6 @@
     <hr>
 
     <form onsubmit="addNewFriend(event)" method="POST">
-        <!-- update the extra fields -->
         <label for="newFriendId">New Friend ID:</label><input name="id" id="newFriendId"/>
 
         <label for="newFriendName">New Friend Name:</label><input name="name" id="newFriendName"/>
@@ -33,7 +32,16 @@
         <div class="resultMsg"></div>
     </form>
 
+    <form onsubmit="deleteFriend(event)" method="POST">
+        <label for="delFriendId">Deleted Friend ID:</label><input name="id" id="delFriendId"/>
+
+        <button>Delete Friend</button>
+        <div id="delResultMsg"></div>
+    </form>    
+
     <script>
+        let numFriends = 0;
+
         function listFriends() {
             document.getElementById('friendList').innerText = '';
 
@@ -45,17 +53,29 @@
                     template.querySelector('.friend-name').innerText = friend.name
                     document.getElementById('friendList').appendChild(template)
                 });
+                numFriends = friends.length
             })
         }
 
         function getRandomFriend() {
-            /* updated the friends to retrieve how many randomid's there are  */
-            let randomId = Math.ceil(Math.random() * 3);
+            let randomId = Math.ceil(Math.random() * numFriends);
+
             fetch('/friends/'+randomId).then(resp => resp.json())
             .then(friend => {
                     document.getElementById('randomFriend').innerText = 'My best friend is '+friend.name
             })            
         }
+
+        function deleteFriend(event) {
+            event.preventDefault();
+            let delFriendId = document.getElementById('delFriendId').value
+            
+            fetch('/friends/'+delFriendId, {method: "DELETE"}).then(resp => resp.json())
+            .then(friend => {
+                document.getElementById('delResultMsg').innerText = friend.name + ' was deleted';
+                numFriends--;
+            })            
+        }        
 
         function addNewFriend(event) {
             event.preventDefault();
@@ -66,7 +86,10 @@
             let formFields = new FormData(form);
 
             postFormFieldsAsJson('/friends/new', formFields)
-                .then(result => document.querySelector('.resultMsg').innerText = JSON.stringify(result))       
+                .then(result => {
+                    document.querySelector('.resultMsg').innerText = JSON.stringify(result);
+                    numFriends++;
+                })       
         }
 
         async function postFormFieldsAsJson(url, formData) {
