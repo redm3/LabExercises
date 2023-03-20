@@ -45,7 +45,8 @@ const Calculator = () => {
   };
 
   return (
-    <div>
+    <div className='componentBox'>
+      <h2>React calculator</h2>
       <input type="number" value={number1} onChange={handleNumber1Change} />
       <select value={operator} onChange={handleOperatorChange}>
         <option value="">--Select Operator--</option>

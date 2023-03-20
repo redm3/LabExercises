@@ -4,6 +4,7 @@ function Comment(props) {
 
     return (
         <div className="Comment componentBox"> {/* using class names that match the component name is a handy convention for tracking components in the front end */}
+        <h2>Kitty</h2>
             <UserInfo user = {props.user}/>
             <div className="Comment-text">
                 {props.text}

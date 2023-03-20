@@ -5,7 +5,8 @@ class PropsDisplayer extends React.Component {
         const stringProps = JSON.stringify(this.props);
 
         return (
-            <div>
+            <div className='componentBox'>
+                <h2>Props Display</h2>
                 <h1>CHECK OUT MY PROPS OBJECT</h1>
                 <h2>{stringProps}</h2>
                 <p>Name: {this.props.name}</p>

@@ -6,6 +6,13 @@ import Comment from './Comment';
 import Greeting from './Greeting';
 import EmojiSwitcher from './EmojiSwitcher';
 import CalculatorComponent from './CalculatorComponent';
+import Example from './Example';
+import Weather from './Weather';
+import HookExample from './HookExample';
+import HookWeather from './HookWeather';
+import HookGreeting from './HookGreeting';
+import HookClockDisplay from './HookClock';
+import ClockDisplay from './Clock';
 
 function formatName(name) {
   return name.first + ' ' + name.last;
@@ -24,7 +31,9 @@ const comment = {
 
 const name = { first: 'Marco', last: 'Wells' };
 return (
+  <div className='componentBox'>
   <div className="App">
+    <h2>Module 6</h2>
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <p>
@@ -43,9 +52,17 @@ return (
     <MyComponent />
     <PropsDisplayer name="Marco" location="NZ" number={42} />
     <Comment user={comment.author} date={comment.date} text={comment.text} />
+    <HookGreeting name = "Marco" />
     <Greeting name="Marco" />
     <EmojiSwitcher />
     <CalculatorComponent />
+    <Example />
+    <Weather/>
+    <HookExample/>
+    <HookWeather/>
+    <ClockDisplay/>
+    <HookClockDisplay/>
+  </div>
   </div>
 );
 }

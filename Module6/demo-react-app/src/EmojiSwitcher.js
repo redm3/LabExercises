@@ -9,7 +9,8 @@ const EmojiSwitcher = () => {
   };
 
   return (
-    <div>
+    <div className='componentBox'>
+      <h2>Emoji</h2>
       <h1><Emoji symbol={emoji} /></h1>
       <button onClick={handleClick}>Switch Emoji</button>
     </div>

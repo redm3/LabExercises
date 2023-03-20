@@ -16,7 +16,8 @@ class Greeting extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='componentBox'>
+        <h2>Class Greeting</h2>
         <h1>Hello {this.state.name}</h1>
         <button onClick={this.handleClick}>Change Name</button>
       </div>
