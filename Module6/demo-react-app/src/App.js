@@ -58,7 +58,6 @@ return (
     <Comment user={comment.author} date={comment.date} text={comment.text} />
     <HookGreeting name = "Marco" />
     <Greeting name="Marco" />
-    <EmojiSwitcher />
     <CalculatorComponent />
     <Example />
     <Weather/>
@@ -70,6 +69,7 @@ return (
     <HookLogin/>
     <Reservation/>
     <StudentList/>
+    <EmojiSwitcher />
   </div>
   </div>
 );
