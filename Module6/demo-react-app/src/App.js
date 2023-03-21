@@ -13,6 +13,10 @@ import HookWeather from './HookWeather';
 import HookGreeting from './HookGreeting';
 import HookClockDisplay from './HookClock';
 import ClockDisplay from './Clock';
+import Login from './Login';
+import HookLogin from './HookLogin';
+import Reservation from './Reservation';
+import StudentList from './StudentList';
 
 function formatName(name) {
   return name.first + ' ' + name.last;
@@ -62,6 +66,10 @@ return (
     <HookWeather/>
     <ClockDisplay/>
     <HookClockDisplay/>
+    <Login/>
+    <HookLogin/>
+    <Reservation/>
+    <StudentList/>
   </div>
   </div>
 );
