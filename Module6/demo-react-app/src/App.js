@@ -1,3 +1,4 @@
+import React, { Suspense } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MyComponent from './MyComponent';
@@ -17,6 +18,11 @@ import Login from './Login';
 import HookLogin from './HookLogin';
 import Reservation from './Reservation';
 import StudentList from './StudentList';
+import SignUpDialog from './SignupDialog';
+import Graph from './Graph';
+const Breweries = React.lazy(() => import('./Breweries'));
+
+
 
 function formatName(name) {
   return name.first + ' ' + name.last;
@@ -24,55 +30,58 @@ function formatName(name) {
 
 function App() {
 
-const comment = {
-  date: new Date(),
-  text: 'I hope you enjoy learning React!',
-  author: {
-    name: 'Hello Kitty',
-    avatarUrl: 'https://placekitten.com/g/64/64',
-  },
-};
+  const comment = {
+    date: new Date(),
+    text: 'I hope you enjoy learning React!',
+    author: {
+      name: 'Hello Kitty',
+      avatarUrl: 'https://placekitten.com/g/64/64',
+    },
+  };
 
-const name = { first: 'Marco', last: 'Wells' };
-return (
-  <div className='componentBox'>
-  <div className="App">
-    <h2>Module 6</h2>
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
-    <h2>{formatName(name)}</h2>
-    <MyComponent />
-    <PropsDisplayer name="Marco" location="NZ" number={42} />
-    <Comment user={comment.author} date={comment.date} text={comment.text} />
-    <HookGreeting name = "Marco" />
-    <Greeting name="Marco" />
-    <CalculatorComponent />
-    <Example />
-    <Weather/>
-    <HookExample/>
-    <HookWeather/>
-    <ClockDisplay/>
-    <HookClockDisplay/>
-    <Login/>
-    <HookLogin/>
-    <Reservation/>
-    <StudentList/>
-    <EmojiSwitcher />
-  </div>
-  </div>
-);
+  const name = { first: 'Marco', last: 'Wells' };
+  return (
+    <div className='componentBox'>
+      <div className="App">
+        <h2>Module 6</h2>
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
+        <h2>{formatName(name)}</h2>
+        <MyComponent />
+        <PropsDisplayer name="Marco" location="NZ" number={42} />
+        <Comment user={comment.author} date={comment.date} text={comment.text} />
+        <HookGreeting name="Marco" />
+        <Greeting name="Marco" />
+        <Example />
+        <Weather />
+        <HookExample />
+        <HookWeather />
+        <ClockDisplay />
+        <HookClockDisplay />
+        <Login />
+        <HookLogin />
+        <Reservation />
+        <StudentList />
+        <EmojiSwitcher />
+        <SignUpDialog />
+        <Suspense fallback={<div className="Breweries componentBox">Loading breweries...</div>}><Breweries /></Suspense>
+        <CalculatorComponent />
+        <Graph/>
+      </div>
+    </div>
+  );
 }
 
 export default App;

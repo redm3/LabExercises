@@ -89,4 +89,16 @@ button {
   radial-gradient(farthest-side,#000 98%,#0000) 0 0/2em 2em round; mask: var(--mask); padding: 2em; 
   background: linear-gradient(135deg, #1f005c, #5b0060, #870160, #ac255e, #ca485c, #ffb56b) fixed; color: white; }
 .FancyBorder-blue { background: linear-gradient(135deg, #140061, #50006E, #64018C, #6955FF, #4684FF, #1FA7FF) fixed; }
+.FancyBorder-green {
+  background: linear-gradient(135deg, #2E7D32, #388E3C, #43A047, #4CAF50, #66BB6A, #81C784) fixed;
+}
+.FancyBorder-frostedglass {
+  position: relative; /* make sure the content is positioned relative to this element */
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.2); /* set a transparent background color */
+  border-radius: 0.5rem; /* add some rounded corners */
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2); /* add a subtle drop shadow */
+  backdrop-filter: blur(1rem) saturate(150%) brightness(90%) contrast(120%); /* apply a frosted glass effect */
+  opacity: 0.5;
+}
 

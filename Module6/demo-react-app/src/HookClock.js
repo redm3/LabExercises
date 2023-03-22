@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import FormattedDate from './FormattedDate';
+import FancyBorder from './FancyBorder';
 
 function HookClock() {
 
@@ -45,10 +46,14 @@ function HookClockDisplay() {
 //make a generic toggleClock function that will hide or show based on the current state
     return (
         <div className="HookClockDisplay componentBox">
+            <FancyBorder color="blue">
+      
             <h2>Hook Clock</h2>
             {showClock ? <HookClock /> : null}
             <button onClick={toggleClock}>{showClock ? 'Hide' : 'Show'} HookClock</button>
+            </FancyBorder>
         </div>
+        
     );
 }
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Background from './Background';
 
 const Calculator = () => {
   const [number1, setNumber1] = useState('');
@@ -46,6 +47,7 @@ const Calculator = () => {
 
   return (
     <div className='componentBox'>
+   
       <h2>React calculator</h2>
       <input type="number" value={number1} onChange={handleNumber1Change} />
       <select value={operator} onChange={handleOperatorChange}>

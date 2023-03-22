@@ -1,4 +1,5 @@
 import React from 'react'
+import Background from './Background';
 
 function FormattedDate(props) {
     return <h2 className="FormattedDate">It is {props.date.toLocaleTimeString()}.</h2>;
@@ -73,11 +74,16 @@ class ClockDisplay extends React.Component {
     render() {
 
         return (
+            
             <div className="ClockDisplay componentBox">
+                <Background imageUrl="https://www.aljazeera.com/wp-content/uploads/2022/07/2022-07-12T152833Z_228842849_RC2BAV985K5J_RTRMADP_3_SPACE-EXPLORATION-TELESCOPE.jpg?resize=770%2C513&quality=80">
+
                 <h2>Clock</h2>
                 {this.state.showClock ? <Clock /> : null}
                 <button onClick={this.toggleClock}>{this.state.showClock ? 'Hide Clock' : 'Show Clock'}</button>
+                </Background>
             </div>
+            
         )
     }
 }
