@@ -43,5 +43,6 @@
 }
 
 .componentBox { border: 1px solid #ffffff; margin: 1em; padding: 1em; text-align: center; background: #ffffff; border-radius: 10px;}
+.dark{background:  #5cd9ff; color: #efefef;}
 
 .Circle { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }

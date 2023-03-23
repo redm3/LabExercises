@@ -47,25 +47,24 @@ const ParticlesComponent = (props) => {
         },
         move: {
           enable: true, // enabling this will make particles move in the canvas
-          speed: { min: 1, max: 5 }, // using a range in speed value will make particles move in a random speed between min/max values, each particles have its own value, it won't change in time by default
+          speed: { min: 1, max: 5 }, 
         },
         opacity: {
-          value: { min: 0.1, max: 0.7 }, // using a different opacity, to have some semitransparent effects
+          value: { min: 0.1, max: 0.7 }, 
         },
         size: {
-          value: { min: 1, max: 3 }, // let's randomize the particles size a bit
+          value: { min: 1, max: 3 }, 
         },
       },
     };
   }, []);
 
-  // useCallback is not mandatory, but it's recommended since this callback can be memoized if static
   const particlesInit = useCallback((engine) => {
     loadSlim(engine);
-    // loadFull(engine); // for this sample the slim version is enough, choose whatever you prefer, slim is smaller in size but doesn't have all the plugins and the mouse trail feature
+
   }, []);
 
-  // setting an id can be useful for identifying the right particles component, this is useful for multiple instances or reusable components
+  
   return <Particles id={props.id} init={particlesInit} options={options} />;
 };
 
