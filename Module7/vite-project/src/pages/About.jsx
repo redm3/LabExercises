@@ -4,10 +4,7 @@ function About() {
     return (
         <div className="About">
             <h1>About</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mattis lobortis est, id ornare elit rutrum et.
-                Nulla bibendum hendrerit dolor eget egestas. Nunc sit amet ante id ante rutrum rutrum ut ut turpis. 
-                Morbi molestie fermentum vulputate. Vestibulum eget felis ut lacus elementum sagittis. 
-                Curabitur ornare velit sit amet est laoreet placerat. Donec egestas consectetur diam ac porttitor. Ut nec posuere mi, quis fringilla nisl.</p>
+            <p>This is a React learning Module for The Institute Of Data</p>
         </div>
     )
 }

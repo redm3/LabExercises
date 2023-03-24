@@ -22,6 +22,7 @@ import PropDrilling from './components/PropDrilling';
 import TaskApp from './components/TaskApp'
 import AppRoutes from './routes/AppRoutes'
 import NavBar from './components/NavBar'
+import Footer from './components/Footer';
 
 
 
@@ -92,6 +93,7 @@ function App() {
           <PropDrilling />
         </UserProvider>
       </ThemeProvider>
+      <Footer/>
     </div>
 
 
