@@ -25,7 +25,7 @@ const ParticlesComponent = (props) => {
             mode: "push", // adds the particles on click
           },
           onHover: {
-            enable: true, // enables the hover event
+            enable: false, // enables the hover event
             mode: "repulse", // make the particles run away from the cursor
           },
         },
@@ -41,9 +41,9 @@ const ParticlesComponent = (props) => {
       particles: {
         links: {
           /* color: "#FF0000", */
-          opacity: 0.3,
+          opacity: 0.1,
           enable: true, // enabling this will make particles linked together
-          distance: 200, // maximum distance for linking the particles
+          distance: 5, // maximum distance for linking the particles
         },
         move: {
           enable: true, // enabling this will make particles move in the canvas
@@ -53,7 +53,7 @@ const ParticlesComponent = (props) => {
           value: { min: 0.1, max: 0.7 }, 
         },
         size: {
-          value: { min: 1, max: 3 }, 
+          value: { min: 1, max: 10 }, 
         },
       },
     };

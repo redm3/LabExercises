@@ -2,12 +2,14 @@ import React from 'react';
 import useFormInput from '../hooks/useFormInput';
 import { useContext } from "react";
 import { ThemeContext } from '../context/ThemeContext'
+import { UserContext } from '../context/UserContext';
 
 function Login() {
     const themeProps = useContext(ThemeContext)
 
     const usernameProps = useFormInput('')
     const passwordProps = useFormInput('')
+    const {username, setUsername} = useContext(UserContext)
 
     const [loggedIn, setloggedIn] = React.useState(false)
     const [errorMessage, setErrorMessage] = React.useState('')
@@ -70,13 +72,13 @@ function Login() {
                     </div>
 
                     <button>Login</button>
-                    {errorMessage && <p className="error-message">{errorMessage}</p>}
-                    {loginAttempts < 5 && <p>{5 - loginAttempts} attempts left</p>}
+                    {errorMessage && <h2 className="error-message">{errorMessage}</h2>}
+                    {loginAttempts < 5 && <h2>{5 - loginAttempts} attempts left</h2>}
                 </form>
             )}
 
             {loginAttempts >= 5 && (
-                <p>You have exceeded the maximum number of login attempts. Please try again later.</p>
+                <h2>You have exceeded the maximum number of login attempts. Please try again later.</h2>
             )}
         </div>
     );

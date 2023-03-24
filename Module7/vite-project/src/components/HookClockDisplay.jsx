@@ -6,7 +6,7 @@ import { useEmoji } from '../context/EmojiContext';
 
 function HookClock() {
     const themeProps = useContext(ThemeContext)
-    const { currentEmoji } = useEmoji();
+    /* const { currentEmoji } = useEmoji(); */
     
 
     const [tickCount, setTickCount] = useState(0);
@@ -38,7 +38,7 @@ function HookClock() {
     return (
         <div className="HookClock">
             <h3>Hello, world! {tickCount} seconds have elapsed</h3>
-            <p>Wellington Time: {wellingtonTime}</p>
+            <h2>Wellington Time: {wellingtonTime}</h2>
         </div>
     );    
 }
@@ -57,7 +57,7 @@ function HookClockDisplay() {
         <div className={"HookClockDisplay componentBox" + themeProps.theme}>
             <h2>Hook Clock</h2>
             {showClock ? <HookClock /> : null}
-            <p>Mood: {currentEmoji}</p>
+            <h2>Mood: {currentEmoji}</h2>
 
             <button onClick={toggleClock}>{showClock ? 'Hide' : 'Show'} HookClock</button>
         </div>
