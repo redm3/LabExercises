@@ -11,8 +11,8 @@ function Dashboard() {
             <h1>Dashboard</h1>
 
             <Outlet />            
-            <button onClick={() => navigate('/tasks')}>Show Tasks</button>
-            <button onClick={() => navigate('/messages')}>Show Messages</button>
+            <button onClick={() => navigate('/dashboard/tasks')}>Show Tasks</button>
+            <button onClick={() => navigate('/dashboard/messages')}>Show Messages</button>
 
         </div>
     )

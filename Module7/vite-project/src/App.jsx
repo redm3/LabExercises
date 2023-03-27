@@ -21,9 +21,12 @@ import EmojiProvider from './context/EmojiContext'
 import PropDrilling from './components/PropDrilling';
 import TaskApp from './components/TaskApp'
 import AppRoutes from './routes/AppRoutes'
-import NavBar from './components/NavBar'
+/* import NavBar from './components/NavBar' */
+import NavBarMUI from './components/MUINavBar';
 import Footer from './components/Footer';
-
+import MUIcard from './components/MUIcard';
+import SimpleBottomNavigation from './components/SimpleBottomNavigation';
+/* import LoginMUI from './components/LoginMUI'; */
 
 
 function App() {
@@ -53,7 +56,8 @@ function App() {
         <UserProvider>
           <br></br>
           <br></br>
-          <NavBar />
+          {/* <NavBar /> */}
+          <NavBarMUI/>
 
 
           <ThemeToggle />
@@ -91,8 +95,11 @@ function App() {
             <Mood />
           </EmojiProvider>
           <PropDrilling />
+          <h2>MUI</h2>
+          <MUIcard/>
         </UserProvider>
       </ThemeProvider>
+      <SimpleBottomNavigation/>
       <Footer/>
     </div>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom'
 
+
 function NavBar() {
     return (
         <div className="NavBar">
@@ -9,7 +10,9 @@ function NavBar() {
                 <li><NavLink to="/">Dashboard</NavLink></li>
                 <li><NavLink to="/about">About</NavLink></li>
                 <li><NavLink to="/login">Login</NavLink></li>
+                <li><NavLink to="/LoginMUI">LoginMUI</NavLink></li>
                 <li><NavLink to="/Posts">Posts</NavLink></li>
+                <li><NavLink to="/students">Students</NavLink></li>
             </ul>
         </div>
     )
