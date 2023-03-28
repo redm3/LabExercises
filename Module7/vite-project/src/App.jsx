@@ -27,6 +27,8 @@ import Footer from './components/Footer';
 import MUIcard from './components/MUIcard';
 import SimpleBottomNavigation from './components/SimpleBottomNavigation';
 /* import LoginMUI from './components/LoginMUI'; */
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorMessage from './components/HandleError';
 
 
 function App() {
@@ -75,7 +77,9 @@ function App() {
             </a>
           </div>
           <h1>Vite + React</h1>
+          <ErrorBoundary FallbackComponent={ErrorMessage}>
           <AppRoutes />
+          </ErrorBoundary>
           <div className="card">
             <button onClick={() => setCount((count) => count + 1)}>
               count is {count}

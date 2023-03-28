@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { NavLink } from 'react-router-dom';
 
-const pages = ['Home', 'Dashboard', 'About', 'Login', 'LoginMUI', 'Posts', 'Students'];
+const pages = ['Home', 'Dashboard', 'About', 'Login', 'LoginMUI', 'Posts', 'Students','BlogPost'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavBarMUI() {

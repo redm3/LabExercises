@@ -3,6 +3,8 @@ import {Outlet, useNavigate} from 'react-router-dom'
 
 import { UserContext } from "../context/UserContext";
 
+import ExplodingBomb from '../components/ExplodingBomb';
+
 function Dashboard() {
     const navigate = useNavigate();
 
@@ -13,6 +15,7 @@ function Dashboard() {
             <Outlet />            
             <button onClick={() => navigate('/dashboard/tasks')}>Show Tasks</button>
             <button onClick={() => navigate('/dashboard/messages')}>Show Messages</button>
+            <ExplodingBomb/>
 
         </div>
     )
