@@ -8,6 +8,15 @@ app.use(express.json());
 let userRoutes = require('./routes/userRoutes')
 app.use('/api/users', userRoutes)
 
+let postRoutes = require('./routes/postRoutes')
+app.use('/api/posts', postRoutes)
+
+let commentRoutes = require('./routes/commentRoutes')
+app.use('/api/comments', commentRoutes)
+
+let likeRoutes = require('./routes/likeRoutes')
+app.use('/api/likes', likeRoutes)
+
 app.get("/", (req, res) => {
     res.json({
         message: "Welcome to my MongoDB Exercise 2 application."

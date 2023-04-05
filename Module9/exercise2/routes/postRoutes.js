@@ -1,14 +1,13 @@
 let express = require("express");
 let router = express.Router();
-let Controllers = require("../controllers"); //index.js
+let Controllers = require("../controllers");
 
 router.get('/', (req, res) => {
-    Controllers.userController.getUsers(res);
+    Controllers.postController.getPosts(res);
 })
 
 router.post('/create', (req, res) => {
-    Controllers.userController.createUser(req.body, res)
+    Controllers.postController.createPost(req, res)
 })
-
 
 module.exports = router;
